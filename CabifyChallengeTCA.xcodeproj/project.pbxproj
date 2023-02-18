@@ -12,9 +12,8 @@
 		EED116F129A0454A009D939E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EED116F029A0454A009D939E /* Preview Assets.xcassets */; };
 		EED116FB29A0454A009D939E /* CabifyChallengeTCATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED116FA29A0454A009D939E /* CabifyChallengeTCATests.swift */; };
 		EED1171529A04603009D939E /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = EED1171429A04603009D939E /* ComposableArchitecture */; };
-		EED1171729A04A54009D939E /* AddToCartDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1171629A04A54009D939E /* AddToCartDomain.swift */; };
+		EED1171729A04A54009D939E /* PlusMinusDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1171629A04A54009D939E /* PlusMinusDomain.swift */; };
 		EED1171929A0DE4A009D939E /* PlusMinusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1171829A0DE4A009D939E /* PlusMinusButton.swift */; };
-		EED1171C29A0DF31009D939E /* AddToCartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1171B29A0DF31009D939E /* AddToCartButton.swift */; };
 		EED1172029A0E409009D939E /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1171F29A0E409009D939E /* Product.swift */; };
 		EED1172429A0E43A009D939E /* Discount.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1172329A0E43A009D939E /* Discount.swift */; };
 		EED1172629A0E444009D939E /* Bulk.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1172529A0E444009D939E /* Bulk.swift */; };
@@ -42,9 +41,8 @@
 		EED116F029A0454A009D939E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EED116F629A0454A009D939E /* CabifyChallengeTCATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CabifyChallengeTCATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EED116FA29A0454A009D939E /* CabifyChallengeTCATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabifyChallengeTCATests.swift; sourceTree = "<group>"; };
-		EED1171629A04A54009D939E /* AddToCartDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCartDomain.swift; sourceTree = "<group>"; };
+		EED1171629A04A54009D939E /* PlusMinusDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusMinusDomain.swift; sourceTree = "<group>"; };
 		EED1171829A0DE4A009D939E /* PlusMinusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusMinusButton.swift; sourceTree = "<group>"; };
-		EED1171B29A0DF31009D939E /* AddToCartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCartButton.swift; sourceTree = "<group>"; };
 		EED1171F29A0E409009D939E /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		EED1172329A0E43A009D939E /* Discount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discount.swift; sourceTree = "<group>"; };
 		EED1172529A0E444009D939E /* Bulk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bulk.swift; sourceTree = "<group>"; };
@@ -122,9 +120,8 @@
 		EED1171A29A0DECA009D939E /* AddToCart */ = {
 			isa = PBXGroup;
 			children = (
-				EED1171629A04A54009D939E /* AddToCartDomain.swift */,
+				EED1171629A04A54009D939E /* PlusMinusDomain.swift */,
 				EED1171829A0DE4A009D939E /* PlusMinusButton.swift */,
-				EED1171B29A0DF31009D939E /* AddToCartButton.swift */,
 			);
 			path = AddToCart;
 			sourceTree = "<group>";
@@ -270,14 +267,13 @@
 				EED1171929A0DE4A009D939E /* PlusMinusButton.swift in Sources */,
 				EED1172D29A0E4BC009D939E /* ProductDomain.swift in Sources */,
 				EED1173129A0E97B009D939E /* MockFactory.swift in Sources */,
-				EED1171729A04A54009D939E /* AddToCartDomain.swift in Sources */,
+				EED1171729A04A54009D939E /* PlusMinusDomain.swift in Sources */,
 				EED1172429A0E43A009D939E /* Discount.swift in Sources */,
 				EED1172629A0E444009D939E /* Bulk.swift in Sources */,
 				EED1172029A0E409009D939E /* Product.swift in Sources */,
 				EED1173329A0E9F8009D939E /* Extensions.swift in Sources */,
 				EED1172A29A0E45D009D939E /* TwoForOne.swift in Sources */,
 				EED1172F29A0E8A6009D939E /* ProductCell.swift in Sources */,
-				EED1171C29A0DF31009D939E /* AddToCartButton.swift in Sources */,
 				EED116EA29A04549009D939E /* CabifyChallengeTCAApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,28 +11,28 @@ import ComposableArchitecture
 struct ProductDomain {
     struct State: Equatable {
         let product: Product
-        var addToCartState = AddToCartDomain.State()
+        var plusMinusState = PlusMinusDomain.State()
     }
     
     enum Action: Equatable {
-        case addToCart(AddToCartDomain.Action)
+        case addToCart(PlusMinusDomain.Action)
     }
     
     struct Environment {}
     
     static let reducer = AnyReducer<State, Action, Environment>
         .combine(
-            AddToCartDomain.reducer.pullback(state: \.addToCartState,
+            PlusMinusDomain.reducer.pullback(state: \.plusMinusState,
                                              action: /ProductDomain.Action.addToCart,
                                              environment: { _ in
-                                                 AddToCartDomain.Environment()
+                                                 PlusMinusDomain.Environment()
                                              }),
             .init { state, action, environment in
                 switch action {
                 case .addToCart(.didTapPlusButton):
                     return .none
                 case .addToCart(.didTapMinusButton):
-                    state.addToCartState.count = max(0, state.addToCartState.count)
+                    state.plusMinusState.count = max(0, state.plusMinusState.count)
                     return .none
                 }
             }

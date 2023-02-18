@@ -9,34 +9,32 @@ import SwiftUI
 import ComposableArchitecture
 
 struct PlusMinusButton: View {
-    let store: Store<AddToCartDomain.State, AddToCartDomain.Action>
+    let store: Store<PlusMinusDomain.State, PlusMinusDomain.Action>
     
     var body: some View {
         WithViewStore(self.store) { viewStore in
             HStack {
-                Button {
-                    viewStore.send(.didTapMinusButton)
-                } label: {
-                    Text("-")
-                        .padding(10)
-                        .background(Color.moradul)
-                        .foregroundColor(.white)
-                        .cornerRadius(.infinity)
+                if viewStore.count > 0 {
+                    Button {
+                        viewStore.send(.didTapMinusButton)
+                    } label: {
+                        Image(systemName: "minus.circle")
+                            .foregroundColor(.moradul)
+                            .imageScale(.large)
+                    }
+                    
+                    Text(viewStore.count.description)
+                        .font(.custom("Helvetica Neue", size: 18))
+                        .fontWeight(.bold)
+                        .padding(5)
                 }
-                
-                Text(viewStore.count.description)
-                    .font(.custom("Helvetica Neue", size: 18))
-                    .fontWeight(.bold)
-                    .padding(5)
                 
                 Button {
                     viewStore.send(.didTapPlusButton)
                 } label: {
-                    Text("+")
-                        .padding(10)
-                        .background(Color.moradul)
-                        .foregroundColor(.white)
-                        .cornerRadius(.infinity)
+                    Image(systemName: "plus.circle")
+                        .foregroundColor(.moradul)
+                        .imageScale(.large)
                 }
             }
         }
@@ -45,8 +43,8 @@ struct PlusMinusButton: View {
 
 struct PlusMinusButton_Previews: PreviewProvider {
     static var previews: some View {
-        PlusMinusButton(store: Store(initialState: AddToCartDomain.State(),
-                                     reducer: AddToCartDomain.reducer,
-                                     environment: AddToCartDomain.Environment()))
+        PlusMinusButton(store: Store(initialState: PlusMinusDomain.State(),
+                                     reducer: PlusMinusDomain.reducer,
+                                     environment: PlusMinusDomain.Environment()))
     }
 }

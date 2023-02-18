@@ -8,7 +8,7 @@
 import Foundation
 import ComposableArchitecture
 
-struct AddToCartDomain {
+struct PlusMinusDomain {
     struct State: Equatable {
         var count = 0
     }

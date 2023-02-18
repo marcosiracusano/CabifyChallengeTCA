@@ -12,9 +12,9 @@ import ComposableArchitecture
 struct CabifyChallengeTCAApp: App {
     var body: some Scene {
         WindowGroup {
-            PlusMinusButton(store: Store(initialState: AddToCartDomain.State(),
-                                         reducer: AddToCartDomain.reducer,
-                                         environment: AddToCartDomain.Environment()))
+            PlusMinusButton(store: Store(initialState: PlusMinusDomain.State(),
+                                         reducer: PlusMinusDomain.reducer,
+                                         environment: PlusMinusDomain.Environment()))
         }
     }
 }

@@ -24,19 +24,20 @@ struct ProductCell: View {
                     Text(viewStore.product.name)
                         .font(.custom("Helvetica Neue", size: 16))
                         .fontWeight(.medium)
+                        .padding(.bottom, 5)
                     
                     Text(viewStore.product.price.euroFormattedString)
                         .font(.custom("Helvetica Neue", size: 14))
+                        .padding(.bottom, 5)
                     
                     Text(viewStore.product.discount?.description ?? "")
                         .font(.custom("Helvetica Neue Italic", size: 10))
-                        
-                    
                 }
+                .padding(.leading, 5)
                 
                 Spacer()
                 
-                AddToCartButton(store: self.store.scope(state: \.addToCartState,
+                PlusMinusButton(store: self.store.scope(state: \.plusMinusState,
                                                         action: ProductDomain.Action.addToCart))
             }
             .padding()
