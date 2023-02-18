@@ -15,12 +15,9 @@ struct ProductGroupDomain {
         var productGroup: ProductGroup
     }
     
-    enum Action: Equatable {
-    }
+    enum Action: Equatable {}
     
-    struct Environment {
-        
-    }
+    struct Environment {}
     
     static let reducer = AnyReducer<State, Action, Environment>
         .combine(

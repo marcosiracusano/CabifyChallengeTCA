@@ -25,36 +25,35 @@ struct ProductListView: View {
                 .task {
                     viewStore.send(.fetchProducts)
                 }
+                .refreshable {
+                    viewStore.send(.fetchProducts)
+                }
                 
                 Spacer()
                 
-                if viewStore.state.shouldShowCheckoutButton {
+                ZStack {
                     Button {
                         viewStore.send(.goToCheckout)
                     } label: {
-                        HStack {
-                            Spacer()
-                            
-                            Text("Go to Checkout")
-                                .font(.custom("Helvetica Neue", size: 16))
-                                .fontWeight(.medium)
-                            
-                            Spacer()
-                        }
-                        .padding(16)
-                        .background(Color.moradul)
-                        .foregroundColor(.white)
-                        .cornerRadius(.infinity)
-                        .shadow(radius: 10)
-                        .padding()
+                        Text("Go to Checkout")
                     }
-                } else {
-                    Text("Choose your product")
-                        .font(.custom("Helvetica Neue", size: 16))
-                        .fontWeight(.medium)
-                        .background(.white)
-                        .foregroundColor(.moradul)
-                        .padding(.bottom, 30)
+                    .buttonStyle(.checkout)
+                    .disabled(!viewStore.shouldShowCheckoutButton)
+                    
+                    HStack {
+                        Spacer()
+                        
+                        Text("€200")
+                            .font(.custom("Helvetica Neue", size: 16))
+                            .fontWeight(.medium)
+                            .foregroundColor(.white)
+                            .padding(24)
+                    }
+                }
+                .navigationDestination(isPresented: viewStore.binding(get: \.shouldGoToCheckout, send: .goToCheckout)) {
+                    CheckoutList(store: Store(initialState: viewStore.checkoutCartState,
+                                              reducer: CheckoutListDomain.reducer,
+                                              environment: CheckoutListDomain.Environment()))
                 }
             }
         }

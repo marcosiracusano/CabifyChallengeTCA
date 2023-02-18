@@ -12,6 +12,7 @@ struct ProductListDomain {
     struct State: Equatable {
         var productList: IdentifiedArrayOf<ProductDomain.State> = []
         var checkoutCartState = CheckoutListDomain.State()
+        var shouldGoToCheckout = false
         var shouldShowCheckoutButton: Bool {
             productList.map { $0.count }.reduce(0,+) > 0
         }
@@ -64,6 +65,7 @@ struct ProductListDomain {
                                                                             quantity: state.count))
                         : nil
                     })
+                    state.shouldGoToCheckout = true
                     return .none
                 }
             }

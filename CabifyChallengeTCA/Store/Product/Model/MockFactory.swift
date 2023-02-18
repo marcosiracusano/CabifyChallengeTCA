@@ -13,6 +13,8 @@ class MockFactory {
     static private let tshirtProduct = Product(code: "TSHIRT", name: "Cabify T-Shirt", price: 20)
     static private let mugProduct = Product(code: "MUG", name: "Cabify Coffee Mug", price: 7.5)
     
+    static let voucherProductGroupExample = ProductGroup(product: voucherProduct, quantity: 5)
+    
     static func getProduct(_ id: ProductId) -> Product? {
         switch id {
         case .voucher:
