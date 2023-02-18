@@ -18,7 +18,7 @@ struct ProductCell: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .foregroundColor(Color.moradul)
-                    .frame(height: 80)
+                    .frame(height: 60)
                 
                 VStack(alignment: .leading) {
                     Text(viewStore.product.name)
@@ -33,21 +33,22 @@ struct ProductCell: View {
                     Text(viewStore.product.discount?.description ?? "")
                         .font(.custom("Helvetica Neue Italic", size: 10))
                 }
-                .padding(.leading, 5)
+                .padding(.leading, 16)
                 
                 Spacer()
                 
                 PlusMinusButton(store: self.store.scope(state: \.plusMinusState,
-                                                        action: ProductDomain.Action.addToCart))
+                                                        action: ProductDomain.Action.tapButton))
             }
-            .padding()
+            .padding(.init(top: 16, leading: 0, bottom: 16, trailing: 0))
         }
     }
 }
 
 struct ProductCell_Previews: PreviewProvider {
     static var previews: some View {
-        ProductCell(store: Store(initialState: ProductDomain.State(product: MockFactory.getProduct(.tshirt)!),
+        ProductCell(store: Store(initialState: ProductDomain.State(id: UUID(),
+                                                                   product: MockFactory.getProduct(.tshirt)!),
                                  reducer: ProductDomain.reducer,
                                  environment: ProductDomain.Environment()))
     }

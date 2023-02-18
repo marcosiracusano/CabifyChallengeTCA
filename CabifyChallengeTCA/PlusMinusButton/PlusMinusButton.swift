@@ -9,7 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 
 struct PlusMinusButton: View {
-    let store: Store<PlusMinusDomain.State, PlusMinusDomain.Action>
+    let store: Store<PlusMinusButtonDomain.State, PlusMinusButtonDomain.Action>
     
     var body: some View {
         WithViewStore(self.store) { viewStore in
@@ -22,6 +22,7 @@ struct PlusMinusButton: View {
                             .foregroundColor(.moradul)
                             .imageScale(.large)
                     }
+                    .buttonStyle(.plain)
                     
                     Text(viewStore.count.description)
                         .font(.custom("Helvetica Neue", size: 18))
@@ -36,6 +37,7 @@ struct PlusMinusButton: View {
                         .foregroundColor(.moradul)
                         .imageScale(.large)
                 }
+                .buttonStyle(.plain)
             }
         }
     }
@@ -43,8 +45,8 @@ struct PlusMinusButton: View {
 
 struct PlusMinusButton_Previews: PreviewProvider {
     static var previews: some View {
-        PlusMinusButton(store: Store(initialState: PlusMinusDomain.State(),
-                                     reducer: PlusMinusDomain.reducer,
-                                     environment: PlusMinusDomain.Environment()))
+        PlusMinusButton(store: Store(initialState: PlusMinusButtonDomain.State(),
+                                     reducer: PlusMinusButtonDomain.reducer,
+                                     environment: PlusMinusButtonDomain.Environment()))
     }
 }

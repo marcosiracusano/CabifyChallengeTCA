@@ -9,29 +9,30 @@ import Foundation
 import ComposableArchitecture
 
 struct ProductDomain {
-    struct State: Equatable {
+    struct State: Equatable, Identifiable {
+        let id: UUID
         let product: Product
-        var plusMinusState = PlusMinusDomain.State()
+        var plusMinusState = PlusMinusButtonDomain.State()
     }
     
     enum Action: Equatable {
-        case addToCart(PlusMinusDomain.Action)
+        case tapButton(PlusMinusButtonDomain.Action)
     }
     
     struct Environment {}
     
     static let reducer = AnyReducer<State, Action, Environment>
         .combine(
-            PlusMinusDomain.reducer.pullback(state: \.plusMinusState,
-                                             action: /ProductDomain.Action.addToCart,
+            PlusMinusButtonDomain.reducer.pullback(state: \.plusMinusState,
+                                             action: /ProductDomain.Action.tapButton,
                                              environment: { _ in
-                                                 PlusMinusDomain.Environment()
+                                                 PlusMinusButtonDomain.Environment()
                                              }),
             .init { state, action, environment in
                 switch action {
-                case .addToCart(.didTapPlusButton):
+                case .tapButton(.didTapPlusButton):
                     return .none
-                case .addToCart(.didTapMinusButton):
+                case .tapButton(.didTapMinusButton):
                     state.plusMinusState.count = max(0, state.plusMinusState.count)
                     return .none
                 }

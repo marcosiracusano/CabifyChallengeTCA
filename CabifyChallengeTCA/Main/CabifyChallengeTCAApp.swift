@@ -12,9 +12,11 @@ import ComposableArchitecture
 struct CabifyChallengeTCAApp: App {
     var body: some Scene {
         WindowGroup {
-            PlusMinusButton(store: Store(initialState: PlusMinusDomain.State(),
-                                         reducer: PlusMinusDomain.reducer,
-                                         environment: PlusMinusDomain.Environment()))
+            ProductSelectionView(store: Store(initialState: ProductSelectionDomain.State(),
+                                              reducer: ProductSelectionDomain.reducer,
+                                              environment: ProductSelectionDomain.Environment(fetchProducts: {
+                MockFactory.createProductArray(id: .tshirt, quantity: 3)
+            })))
         }
     }
 }

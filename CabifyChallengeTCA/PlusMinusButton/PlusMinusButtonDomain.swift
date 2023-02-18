@@ -8,7 +8,7 @@
 import Foundation
 import ComposableArchitecture
 
-struct PlusMinusDomain {
+struct PlusMinusButtonDomain {
     struct State: Equatable {
         var count = 0
     }
@@ -18,8 +18,7 @@ struct PlusMinusDomain {
         case didTapMinusButton
     }
     
-    struct Environment {
-    }
+    struct Environment {}
     
     static let reducer = AnyReducer<State, Action, Environment> { state, action, environment in
         switch action {
