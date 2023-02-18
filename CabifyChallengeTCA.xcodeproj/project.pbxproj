@@ -8,23 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		EED116EA29A04549009D939E /* CabifyChallengeTCAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED116E929A04549009D939E /* CabifyChallengeTCAApp.swift */; };
-		EED116EC29A04549009D939E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED116EB29A04549009D939E /* ContentView.swift */; };
 		EED116EE29A0454A009D939E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EED116ED29A0454A009D939E /* Assets.xcassets */; };
 		EED116F129A0454A009D939E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EED116F029A0454A009D939E /* Preview Assets.xcassets */; };
 		EED116FB29A0454A009D939E /* CabifyChallengeTCATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED116FA29A0454A009D939E /* CabifyChallengeTCATests.swift */; };
-		EED1170529A0454A009D939E /* CabifyChallengeTCAUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1170429A0454A009D939E /* CabifyChallengeTCAUITests.swift */; };
-		EED1170729A0454A009D939E /* CabifyChallengeTCAUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1170629A0454A009D939E /* CabifyChallengeTCAUITestsLaunchTests.swift */; };
+		EED1171529A04603009D939E /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = EED1171429A04603009D939E /* ComposableArchitecture */; };
+		EED1171729A04A54009D939E /* AddToCartDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1171629A04A54009D939E /* AddToCartDomain.swift */; };
+		EED1171929A0DE4A009D939E /* PlusMinusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1171829A0DE4A009D939E /* PlusMinusButton.swift */; };
+		EED1171C29A0DF31009D939E /* AddToCartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1171B29A0DF31009D939E /* AddToCartButton.swift */; };
+		EED1172029A0E409009D939E /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1171F29A0E409009D939E /* Product.swift */; };
+		EED1172429A0E43A009D939E /* Discount.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1172329A0E43A009D939E /* Discount.swift */; };
+		EED1172629A0E444009D939E /* Bulk.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1172529A0E444009D939E /* Bulk.swift */; };
+		EED1172A29A0E45D009D939E /* TwoForOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1172929A0E45D009D939E /* TwoForOne.swift */; };
+		EED1172D29A0E4BC009D939E /* ProductDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1172C29A0E4BC009D939E /* ProductDomain.swift */; };
+		EED1172F29A0E8A6009D939E /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1172E29A0E8A6009D939E /* ProductCell.swift */; };
+		EED1173129A0E97B009D939E /* MockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1173029A0E97B009D939E /* MockFactory.swift */; };
+		EED1173329A0E9F8009D939E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1173229A0E9F8009D939E /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		EED116F729A0454A009D939E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EED116DE29A04548009D939E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EED116E529A04548009D939E;
-			remoteInfo = CabifyChallengeTCA;
-		};
-		EED1170129A0454A009D939E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EED116DE29A04548009D939E /* Project object */;
 			proxyType = 1;
@@ -36,14 +38,21 @@
 /* Begin PBXFileReference section */
 		EED116E629A04549009D939E /* CabifyChallengeTCA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CabifyChallengeTCA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EED116E929A04549009D939E /* CabifyChallengeTCAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabifyChallengeTCAApp.swift; sourceTree = "<group>"; };
-		EED116EB29A04549009D939E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EED116ED29A0454A009D939E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EED116F029A0454A009D939E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EED116F629A0454A009D939E /* CabifyChallengeTCATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CabifyChallengeTCATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EED116FA29A0454A009D939E /* CabifyChallengeTCATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabifyChallengeTCATests.swift; sourceTree = "<group>"; };
-		EED1170029A0454A009D939E /* CabifyChallengeTCAUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CabifyChallengeTCAUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EED1170429A0454A009D939E /* CabifyChallengeTCAUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabifyChallengeTCAUITests.swift; sourceTree = "<group>"; };
-		EED1170629A0454A009D939E /* CabifyChallengeTCAUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabifyChallengeTCAUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EED1171629A04A54009D939E /* AddToCartDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCartDomain.swift; sourceTree = "<group>"; };
+		EED1171829A0DE4A009D939E /* PlusMinusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusMinusButton.swift; sourceTree = "<group>"; };
+		EED1171B29A0DF31009D939E /* AddToCartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCartButton.swift; sourceTree = "<group>"; };
+		EED1171F29A0E409009D939E /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		EED1172329A0E43A009D939E /* Discount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discount.swift; sourceTree = "<group>"; };
+		EED1172529A0E444009D939E /* Bulk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bulk.swift; sourceTree = "<group>"; };
+		EED1172929A0E45D009D939E /* TwoForOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoForOne.swift; sourceTree = "<group>"; };
+		EED1172C29A0E4BC009D939E /* ProductDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDomain.swift; sourceTree = "<group>"; };
+		EED1172E29A0E8A6009D939E /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		EED1173029A0E97B009D939E /* MockFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockFactory.swift; sourceTree = "<group>"; };
+		EED1173229A0E9F8009D939E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,17 +60,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EED1171529A04603009D939E /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		EED116F329A0454A009D939E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EED116FD29A0454A009D939E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -76,7 +79,6 @@
 			children = (
 				EED116E829A04549009D939E /* CabifyChallengeTCA */,
 				EED116F929A0454A009D939E /* CabifyChallengeTCATests */,
-				EED1170329A0454A009D939E /* CabifyChallengeTCAUITests */,
 				EED116E729A04549009D939E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -86,7 +88,6 @@
 			children = (
 				EED116E629A04549009D939E /* CabifyChallengeTCA.app */,
 				EED116F629A0454A009D939E /* CabifyChallengeTCATests.xctest */,
-				EED1170029A0454A009D939E /* CabifyChallengeTCAUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -94,9 +95,9 @@
 		EED116E829A04549009D939E /* CabifyChallengeTCA */ = {
 			isa = PBXGroup;
 			children = (
-				EED116E929A04549009D939E /* CabifyChallengeTCAApp.swift */,
-				EED116EB29A04549009D939E /* ContentView.swift */,
-				EED116ED29A0454A009D939E /* Assets.xcassets */,
+				EED1171E29A0E3B9009D939E /* Main */,
+				EED1171A29A0DECA009D939E /* AddToCart */,
+				EED1171D29A0E3AC009D939E /* Product */,
 				EED116EF29A0454A009D939E /* Preview Content */,
 			);
 			path = CabifyChallengeTCA;
@@ -118,13 +119,46 @@
 			path = CabifyChallengeTCATests;
 			sourceTree = "<group>";
 		};
-		EED1170329A0454A009D939E /* CabifyChallengeTCAUITests */ = {
+		EED1171A29A0DECA009D939E /* AddToCart */ = {
 			isa = PBXGroup;
 			children = (
-				EED1170429A0454A009D939E /* CabifyChallengeTCAUITests.swift */,
-				EED1170629A0454A009D939E /* CabifyChallengeTCAUITestsLaunchTests.swift */,
+				EED1171629A04A54009D939E /* AddToCartDomain.swift */,
+				EED1171829A0DE4A009D939E /* PlusMinusButton.swift */,
+				EED1171B29A0DF31009D939E /* AddToCartButton.swift */,
 			);
-			path = CabifyChallengeTCAUITests;
+			path = AddToCart;
+			sourceTree = "<group>";
+		};
+		EED1171D29A0E3AC009D939E /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				EED1172B29A0E4A6009D939E /* Model */,
+				EED1172C29A0E4BC009D939E /* ProductDomain.swift */,
+				EED1172E29A0E8A6009D939E /* ProductCell.swift */,
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
+		EED1171E29A0E3B9009D939E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				EED116E929A04549009D939E /* CabifyChallengeTCAApp.swift */,
+				EED1173229A0E9F8009D939E /* Extensions.swift */,
+				EED116ED29A0454A009D939E /* Assets.xcassets */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		EED1172B29A0E4A6009D939E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EED1173029A0E97B009D939E /* MockFactory.swift */,
+				EED1171F29A0E409009D939E /* Product.swift */,
+				EED1172329A0E43A009D939E /* Discount.swift */,
+				EED1172529A0E444009D939E /* Bulk.swift */,
+				EED1172929A0E45D009D939E /* TwoForOne.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +177,9 @@
 			dependencies = (
 			);
 			name = CabifyChallengeTCA;
+			packageProductDependencies = (
+				EED1171429A04603009D939E /* ComposableArchitecture */,
+			);
 			productName = CabifyChallengeTCA;
 			productReference = EED116E629A04549009D939E /* CabifyChallengeTCA.app */;
 			productType = "com.apple.product-type.application";
@@ -165,24 +202,6 @@
 			productReference = EED116F629A0454A009D939E /* CabifyChallengeTCATests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		EED116FF29A0454A009D939E /* CabifyChallengeTCAUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EED1171029A0454A009D939E /* Build configuration list for PBXNativeTarget "CabifyChallengeTCAUITests" */;
-			buildPhases = (
-				EED116FC29A0454A009D939E /* Sources */,
-				EED116FD29A0454A009D939E /* Frameworks */,
-				EED116FE29A0454A009D939E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				EED1170229A0454A009D939E /* PBXTargetDependency */,
-			);
-			name = CabifyChallengeTCAUITests;
-			productName = CabifyChallengeTCAUITests;
-			productReference = EED1170029A0454A009D939E /* CabifyChallengeTCAUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -200,10 +219,6 @@
 						CreatedOnToolsVersion = 14.1;
 						TestTargetID = EED116E529A04548009D939E;
 					};
-					EED116FF29A0454A009D939E = {
-						CreatedOnToolsVersion = 14.1;
-						TestTargetID = EED116E529A04548009D939E;
-					};
 				};
 			};
 			buildConfigurationList = EED116E129A04548009D939E /* Build configuration list for PBXProject "CabifyChallengeTCA" */;
@@ -215,13 +230,15 @@
 				Base,
 			);
 			mainGroup = EED116DD29A04548009D939E;
+			packageReferences = (
+				EED1171329A04603009D939E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = EED116E729A04549009D939E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				EED116E529A04548009D939E /* CabifyChallengeTCA */,
 				EED116F529A0454A009D939E /* CabifyChallengeTCATests */,
-				EED116FF29A0454A009D939E /* CabifyChallengeTCAUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -243,13 +260,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EED116FE29A0454A009D939E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -257,7 +267,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EED116EC29A04549009D939E /* ContentView.swift in Sources */,
+				EED1171929A0DE4A009D939E /* PlusMinusButton.swift in Sources */,
+				EED1172D29A0E4BC009D939E /* ProductDomain.swift in Sources */,
+				EED1173129A0E97B009D939E /* MockFactory.swift in Sources */,
+				EED1171729A04A54009D939E /* AddToCartDomain.swift in Sources */,
+				EED1172429A0E43A009D939E /* Discount.swift in Sources */,
+				EED1172629A0E444009D939E /* Bulk.swift in Sources */,
+				EED1172029A0E409009D939E /* Product.swift in Sources */,
+				EED1173329A0E9F8009D939E /* Extensions.swift in Sources */,
+				EED1172A29A0E45D009D939E /* TwoForOne.swift in Sources */,
+				EED1172F29A0E8A6009D939E /* ProductCell.swift in Sources */,
+				EED1171C29A0DF31009D939E /* AddToCartButton.swift in Sources */,
 				EED116EA29A04549009D939E /* CabifyChallengeTCAApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,15 +290,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EED116FC29A0454A009D939E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EED1170529A0454A009D939E /* CabifyChallengeTCAUITests.swift in Sources */,
-				EED1170729A0454A009D939E /* CabifyChallengeTCAUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -286,11 +297,6 @@
 			isa = PBXTargetDependency;
 			target = EED116E529A04548009D939E /* CabifyChallengeTCA */;
 			targetProxy = EED116F729A0454A009D939E /* PBXContainerItemProxy */;
-		};
-		EED1170229A0454A009D939E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EED116E529A04548009D939E /* CabifyChallengeTCA */;
-			targetProxy = EED1170129A0454A009D939E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -503,40 +509,6 @@
 			};
 			name = Release;
 		};
-		EED1171129A0454A009D939E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = marcosiracusano.CabifyChallengeTCAUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = CabifyChallengeTCA;
-			};
-			name = Debug;
-		};
-		EED1171229A0454A009D939E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = marcosiracusano.CabifyChallengeTCAUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = CabifyChallengeTCA;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -567,16 +539,26 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EED1171029A0454A009D939E /* Build configuration list for PBXNativeTarget "CabifyChallengeTCAUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EED1171129A0454A009D939E /* Debug */,
-				EED1171229A0454A009D939E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EED1171329A04603009D939E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EED1171429A04603009D939E /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EED1171329A04603009D939E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EED116DE29A04548009D939E /* Project object */;
 }
