@@ -9,10 +9,15 @@ import Foundation
 import ComposableArchitecture
 
 struct ProductDomain {
+    
     struct State: Equatable, Identifiable {
         let id: UUID
         let product: Product
         var plusMinusState = PlusMinusButtonDomain.State()
+        var count: Int {
+            get { plusMinusState.count }
+            set { plusMinusState.count = newValue }
+        }
     }
     
     enum Action: Equatable {

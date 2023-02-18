@@ -12,9 +12,9 @@ import ComposableArchitecture
 struct CabifyChallengeTCAApp: App {
     var body: some Scene {
         WindowGroup {
-            ProductSelectionView(store: Store(initialState: ProductSelectionDomain.State(),
-                                              reducer: ProductSelectionDomain.reducer,
-                                              environment: ProductSelectionDomain.Environment(fetchProducts: {
+            ProductListView(store: Store(initialState: ProductListDomain.State(),
+                                              reducer: ProductListDomain.reducer,
+                                              environment: ProductListDomain.Environment(fetchProducts: {
                 MockFactory.createProductArray(id: .tshirt, quantity: 3)
             })))
         }

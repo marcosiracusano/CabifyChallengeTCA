@@ -1,5 +1,5 @@
 //
-//  ProductSelectionDomain.swift
+//  ProductListDomain.swift
 //  CabifyChallengeTCA
 //
 //  Created by Marco Siracusano on 18/02/2023.
@@ -8,15 +8,20 @@
 import Foundation
 import ComposableArchitecture
 
-struct ProductSelectionDomain {
+struct ProductListDomain {
     struct State: Equatable {
         var productList: IdentifiedArrayOf<ProductDomain.State> = []
+        var checkoutCartState = CheckoutListDomain.State()
+        var shouldShowCheckoutButton: Bool {
+            productList.map { $0.count }.reduce(0,+) > 0
+        }
     }
     
     enum Action: Equatable {
         case fetchProducts
         case fetchProductsResponse(TaskResult<[Product]>)
         case product(id: ProductDomain.State.ID, action: ProductDomain.Action)
+        case goToCheckout
     }
     
     struct Environment {
@@ -50,7 +55,17 @@ struct ProductSelectionDomain {
                     
                 case .product(id: let id, action: let action):
                     return .none
+                    
+                case .goToCheckout:
+                    state.checkoutCartState.productGroups = IdentifiedArray(uniqueElements: state.productList.compactMap { state in
+                        state.count > 0 ?
+                        ProductGroupDomain.State(id: UUID(),
+                                                 productGroup: ProductGroup(product: state.product,
+                                                                            quantity: state.count))
+                        : nil
+                    })
+                    return .none
                 }
             }
-        ).debug()
+        )
 }
