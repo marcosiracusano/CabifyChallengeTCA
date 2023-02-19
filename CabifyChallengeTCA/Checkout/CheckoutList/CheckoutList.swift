@@ -12,13 +12,18 @@ struct CheckoutList: View {
     let store: Store<CheckoutListDomain.State, CheckoutListDomain.Action>
     
     var body: some View {
-        List {
-            ForEachStore(store.scope(state: \.productGroups,
-                                     action: CheckoutListDomain.Action.productGroup(id:action:))) {
-                ProductGroupCell(store: $0)
+        WithViewStore(self.store) { viewStore in
+            List {
+                ForEachStore(store.scope(state: \.productGroups,
+                                         action: CheckoutListDomain.Action.productGroup(id:action:))) {
+                    ProductGroupCell(store: $0)
+                }
+            }
+            .listStyle(.plain)
+            .onDisappear {
+                viewStore.send(.goBack)
             }
         }
-        .listStyle(.plain)
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  CheckoutButtonDomain.swift
+//  ChooseProductButtonDomain.swift
 //  CabifyChallengeTCA
 //
 //  Created by Marco Siracusano on 19/02/2023.
@@ -8,7 +8,7 @@
 import Foundation
 import ComposableArchitecture
 
-struct CheckoutButtonDomain {
+struct ChooseProductButtonDomain {
     
     struct State: Equatable {
         var shouldShowCheckoutButton = false

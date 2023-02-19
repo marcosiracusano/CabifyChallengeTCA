@@ -13,10 +13,10 @@ struct ProductDomain {
     struct State: Equatable, Identifiable {
         let id: UUID
         let product: Product
-        var plusMinusState = PlusMinusButtonDomain.State()
+        var plusMinusButton = PlusMinusButtonDomain.State()
         var count: Int {
-            get { plusMinusState.count }
-            set { plusMinusState.count = newValue }
+            get { plusMinusButton.count }
+            set { plusMinusButton.count = newValue }
         }
     }
     
@@ -28,7 +28,7 @@ struct ProductDomain {
     
     static let reducer = AnyReducer<State, Action, Environment>
         .combine(
-            PlusMinusButtonDomain.reducer.pullback(state: \.plusMinusState,
+            PlusMinusButtonDomain.reducer.pullback(state: \.plusMinusButton,
                                              action: /ProductDomain.Action.tapButton,
                                              environment: { _ in
                                                  PlusMinusButtonDomain.Environment()
@@ -38,7 +38,7 @@ struct ProductDomain {
                 case .tapButton(.didTapPlusButton):
                     return .none
                 case .tapButton(.didTapMinusButton):
-                    state.plusMinusState.count = max(0, state.plusMinusState.count)
+                    state.plusMinusButton.count = max(0, state.plusMinusButton.count)
                     return .none
                 }
             }

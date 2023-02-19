@@ -37,7 +37,7 @@ struct ProductCell: View {
                 
                 Spacer()
                 
-                PlusMinusButton(store: self.store.scope(state: \.plusMinusState,
+                PlusMinusButton(store: self.store.scope(state: \.plusMinusButton,
                                                         action: ProductDomain.Action.tapButton))
             }
             .padding(.init(top: 16, leading: 0, bottom: 16, trailing: 0))

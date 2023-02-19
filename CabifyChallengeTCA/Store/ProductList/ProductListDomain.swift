@@ -11,8 +11,8 @@ import ComposableArchitecture
 struct ProductListDomain {
     struct State: Equatable {
         var productList: IdentifiedArrayOf<ProductDomain.State> = []
-        var checkoutCartState = CheckoutListDomain.State()
-        var checkoutButtonState = CheckoutButtonDomain.State()
+        var chooseProductButton = ChooseProductButtonDomain.State()
+        var checkoutList = CheckoutListDomain.State()
         var shouldGoToCheckout = false
     }
     
@@ -20,10 +20,10 @@ struct ProductListDomain {
         case fetchProducts
         case fetchProductsResponse(TaskResult<[Product]>)
         case product(id: ProductDomain.State.ID, action: ProductDomain.Action)
-        case getCheckoutButtonState
+        case getChooseProductButtonState
         case getTotalPrice
-        case checkoutButton(CheckoutButtonDomain.Action)
-        case goToCheckout
+        case chooseProductButton(ChooseProductButtonDomain.Action)
+        case goToCheckout(isPushed: Bool)
     }
     
     struct Environment {
@@ -41,9 +41,15 @@ struct ProductListDomain {
                                           action: /Action.product(id:action:),
                                           environment: { _ in ProductDomain.Environment() }),
             
+            ChooseProductButtonDomain.reducer.pullback(state: \.chooseProductButton,
+                                                       action: /Action.chooseProductButton,
+                                                       environment: { _ in
+                                                           ChooseProductButtonDomain.Environment() }),
+            
             .init { state, action, environment in
                 switch action {
                 case .fetchProducts:
+                    state.shouldGoToCheckout = false
                     return .task {
                         await .fetchProductsResponse(
                             TaskResult(catching: {
@@ -54,28 +60,28 @@ struct ProductListDomain {
                     
                 case .fetchProductsResponse(.success( let products)):
                     state.productList = IdentifiedArray(uniqueElements: products.map { ProductDomain.State(id: UUID(), product: $0) })
-                    return .none
+                    return .send(.getChooseProductButtonState)
                     
                 case .fetchProductsResponse(.failure( let error)):
                     print(error)
                     return .none
                     
                 case .product(id: let id, action: let action):
-                    return .send(.getCheckoutButtonState)
+                    return .send(.getChooseProductButtonState)
                     
-                case .getCheckoutButtonState:
-                    state.checkoutButtonState.shouldShowCheckoutButton = state.productList.map { $0.count }.reduce(0,+) > 0
+                case .getChooseProductButtonState:
+                    state.chooseProductButton.shouldShowCheckoutButton = state.productList.map { $0.count }.reduce(0,+) > 0
                     return .send(.getTotalPrice)
                     
                 case .getTotalPrice:
-                    state.checkoutButtonState.totalPrice = state.productList.map { $0.product.price * Double($0.count) }.reduce(0,+)
+                    state.chooseProductButton.totalPrice = state.productList.map { $0.product.price * Double($0.count) }.reduce(0,+)
                     return .none
                     
-                case .checkoutButton(let action):
-                    return .send(.goToCheckout)
+                case .chooseProductButton(let action):
+                    return .send(.goToCheckout(isPushed: true))
                     
-                case .goToCheckout:
-                    state.checkoutCartState.productGroups = IdentifiedArray(uniqueElements: state.productList.compactMap { state in
+                case .goToCheckout(let isPushed):
+                    state.checkoutList.productGroups = IdentifiedArray(uniqueElements: state.productList.compactMap { state in
                         state.count > 0 ?
                         ProductGroupDomain.State(id: UUID(),
                                                  productGroup: ProductGroup(product: state.product,

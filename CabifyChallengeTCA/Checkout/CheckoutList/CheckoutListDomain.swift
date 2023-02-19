@@ -17,6 +17,7 @@ struct CheckoutListDomain {
     
     enum Action: Equatable {
         case productGroup(id: ProductGroupDomain.State.ID, action: ProductGroupDomain.Action)
+        case goBack
         case showBuyDialog
     }
     
@@ -27,6 +28,9 @@ struct CheckoutListDomain {
             .init { state, action, environment in
                 switch action {
                 case .productGroup(id: let id, action: let action):
+                    return .none
+                    
+                case .goBack:
                     return .none
                     
                 case .showBuyDialog:

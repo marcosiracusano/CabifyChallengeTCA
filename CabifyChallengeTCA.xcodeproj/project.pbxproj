@@ -11,8 +11,8 @@
 		EE1F9CB129A17F6800C04048 /* CheckoutList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1F9CB029A17F6800C04048 /* CheckoutList.swift */; };
 		EE1F9CB329A188AB00C04048 /* ProductGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1F9CB229A188AB00C04048 /* ProductGroupCell.swift */; };
 		EEB147E029A2A18300B970BD /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = EEB147DF29A2A18300B970BD /* ComposableArchitecture */; };
-		EEB147E329A2B36F00B970BD /* CheckoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB147E229A2B36F00B970BD /* CheckoutButton.swift */; };
-		EEB147E529A2B39200B970BD /* CheckoutButtonDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB147E429A2B39200B970BD /* CheckoutButtonDomain.swift */; };
+		EEB147E329A2B36F00B970BD /* ChooseProductButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB147E229A2B36F00B970BD /* ChooseProductButton.swift */; };
+		EEB147E529A2B39200B970BD /* ChooseProductButtonDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB147E429A2B39200B970BD /* ChooseProductButtonDomain.swift */; };
 		EED116EA29A04549009D939E /* CabifyChallengeTCAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED116E929A04549009D939E /* CabifyChallengeTCAApp.swift */; };
 		EED116EE29A0454A009D939E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EED116ED29A0454A009D939E /* Assets.xcassets */; };
 		EED116F129A0454A009D939E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EED116F029A0454A009D939E /* Preview Assets.xcassets */; };
@@ -48,8 +48,8 @@
 		EE1F9CAD29A1794900C04048 /* CheckoutStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutStyle.swift; sourceTree = "<group>"; };
 		EE1F9CB029A17F6800C04048 /* CheckoutList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutList.swift; sourceTree = "<group>"; };
 		EE1F9CB229A188AB00C04048 /* ProductGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductGroupCell.swift; sourceTree = "<group>"; };
-		EEB147E229A2B36F00B970BD /* CheckoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutButton.swift; sourceTree = "<group>"; };
-		EEB147E429A2B39200B970BD /* CheckoutButtonDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutButtonDomain.swift; sourceTree = "<group>"; };
+		EEB147E229A2B36F00B970BD /* ChooseProductButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseProductButton.swift; sourceTree = "<group>"; };
+		EEB147E429A2B39200B970BD /* ChooseProductButtonDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseProductButtonDomain.swift; sourceTree = "<group>"; };
 		EED116E629A04549009D939E /* CabifyChallengeTCA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CabifyChallengeTCA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EED116E929A04549009D939E /* CabifyChallengeTCAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabifyChallengeTCAApp.swift; sourceTree = "<group>"; };
 		EED116ED29A0454A009D939E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -101,13 +101,13 @@
 			path = CheckoutList;
 			sourceTree = "<group>";
 		};
-		EEB147E129A2B35F00B970BD /* CheckoutButton */ = {
+		EEB147E129A2B35F00B970BD /* ChooseProductButton */ = {
 			isa = PBXGroup;
 			children = (
-				EEB147E429A2B39200B970BD /* CheckoutButtonDomain.swift */,
-				EEB147E229A2B36F00B970BD /* CheckoutButton.swift */,
+				EEB147E429A2B39200B970BD /* ChooseProductButtonDomain.swift */,
+				EEB147E229A2B36F00B970BD /* ChooseProductButton.swift */,
 			);
-			path = CheckoutButton;
+			path = ChooseProductButton;
 			sourceTree = "<group>";
 		};
 		EED116DD29A04548009D939E = {
@@ -220,7 +220,7 @@
 			children = (
 				EED1171A29A0DECA009D939E /* PlusMinusButton */,
 				EED1171D29A0E3AC009D939E /* Product */,
-				EEB147E129A2B35F00B970BD /* CheckoutButton */,
+				EEB147E129A2B35F00B970BD /* ChooseProductButton */,
 				EED1173429A0F6F1009D939E /* ProductList */,
 			);
 			path = Store;
@@ -343,7 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EED1171929A0DE4A009D939E /* PlusMinusButton.swift in Sources */,
-				EEB147E329A2B36F00B970BD /* CheckoutButton.swift in Sources */,
+				EEB147E329A2B36F00B970BD /* ChooseProductButton.swift in Sources */,
 				EE1F9CB129A17F6800C04048 /* CheckoutList.swift in Sources */,
 				EED1173B29A14446009D939E /* CheckoutListDomain.swift in Sources */,
 				EED1172D29A0E4BC009D939E /* ProductDomain.swift in Sources */,
@@ -351,7 +351,7 @@
 				EED1173D29A144F7009D939E /* ProductGroup.swift in Sources */,
 				EED1171729A04A54009D939E /* PlusMinusButtonDomain.swift in Sources */,
 				EED1172429A0E43A009D939E /* Discount.swift in Sources */,
-				EEB147E529A2B39200B970BD /* CheckoutButtonDomain.swift in Sources */,
+				EEB147E529A2B39200B970BD /* ChooseProductButtonDomain.swift in Sources */,
 				EED1172629A0E444009D939E /* Bulk.swift in Sources */,
 				EED1173629A0F70D009D939E /* ProductListDomain.swift in Sources */,
 				EE1F9CB329A188AB00C04048 /* ProductGroupCell.swift in Sources */,

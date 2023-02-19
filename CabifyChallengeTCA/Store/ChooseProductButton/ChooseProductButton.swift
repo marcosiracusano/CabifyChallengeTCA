@@ -8,8 +8,8 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct CheckoutButton: View {
-    let store: Store<CheckoutButtonDomain.State, CheckoutButtonDomain.Action>
+struct ChooseProductButton: View {
+    let store: Store<ChooseProductButtonDomain.State, ChooseProductButtonDomain.Action>
 
     
     var body: some View {
@@ -41,8 +41,8 @@ struct CheckoutButton: View {
 
 struct CheckoutButton_Previews: PreviewProvider {
     static var previews: some View {
-        CheckoutButton(store: Store(initialState: CheckoutButtonDomain.State(),
-                                    reducer: CheckoutButtonDomain.reducer,
-                                    environment: CheckoutButtonDomain.Environment()))
+        ChooseProductButton(store: Store(initialState: ChooseProductButtonDomain.State(),
+                                    reducer: ChooseProductButtonDomain.reducer,
+                                    environment: ChooseProductButtonDomain.Environment()))
     }
 }

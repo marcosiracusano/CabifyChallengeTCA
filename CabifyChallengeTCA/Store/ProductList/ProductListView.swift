@@ -12,7 +12,7 @@ struct ProductListView: View {
     let store: Store<ProductListDomain.State, ProductListDomain.Action>
     
     var body: some View {
-        WithViewStore(store) { viewStore in
+        WithViewStore(self.store) { viewStore in
             NavigationStack {
                 List {
                     ForEachStore(store.scope(state: \.productList,
@@ -31,11 +31,12 @@ struct ProductListView: View {
                 
                 Spacer()
                 
-                CheckoutButton(store: self.store.scope(state: \.checkoutButtonState,
-                                                       action: ProductListDomain.Action.checkoutButton))
+                ChooseProductButton(store: self.store.scope(state: \.chooseProductButton,
+                                                       action: ProductListDomain.Action.chooseProductButton))
                 
-                .navigationDestination(isPresented: viewStore.binding(get: \.shouldGoToCheckout, send: .goToCheckout)) {
-                    CheckoutList(store: Store(initialState: viewStore.checkoutCartState,
+                .navigationDestination(isPresented: viewStore.binding(get: \.shouldGoToCheckout,
+                                                                      send: ProductListDomain.Action.goToCheckout(isPushed:))) {
+                    CheckoutList(store: Store(initialState: viewStore.checkoutList,
                                               reducer: CheckoutListDomain.reducer,
                                               environment: CheckoutListDomain.Environment()))
                 }
