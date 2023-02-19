@@ -39,15 +39,17 @@ struct ProductListView: View {
                     }
                     .buttonStyle(.checkout)
                     .disabled(!viewStore.shouldShowCheckoutButton)
+                    .animation(.easeIn(duration: 0.2), value: viewStore.shouldShowCheckoutButton)
                     
                     HStack {
                         Spacer()
                         
-                        Text("€200")
-                            .font(.custom("Helvetica Neue", size: 16))
-                            .fontWeight(.medium)
-                            .foregroundColor(.white)
-                            .padding(24)
+                        if !viewStore.totalPrice.isZero {
+                            Text(viewStore.totalPrice.euroFormattedString)
+                                .font(.custom("Helvetica Neue", size: 14))
+                                .foregroundColor(.white)
+                                .padding(24)
+                        }
                     }
                 }
                 .navigationDestination(isPresented: viewStore.binding(get: \.shouldGoToCheckout, send: .goToCheckout)) {
@@ -64,8 +66,6 @@ struct ProductSelectionView_Previews: PreviewProvider {
     static var previews: some View {
         ProductListView(store: Store(initialState: ProductListDomain.State(),
                                           reducer: ProductListDomain.reducer,
-                                          environment: ProductListDomain.Environment(fetchProducts: {
-            MockFactory.createProductArray(id: .tshirt, quantity: 3)
-        })))
+                                          environment: ProductListDomain.Environment()))
     }
 }

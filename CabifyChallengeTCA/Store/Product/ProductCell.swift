@@ -18,7 +18,7 @@ struct ProductCell: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .foregroundColor(Color.moradul)
-                    .frame(height: 60)
+                    .frame(width: 70, height: 70)
                 
                 VStack(alignment: .leading) {
                     Text(viewStore.product.name)

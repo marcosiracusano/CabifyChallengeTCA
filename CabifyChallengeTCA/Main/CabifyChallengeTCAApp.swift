@@ -14,9 +14,7 @@ struct CabifyChallengeTCAApp: App {
         WindowGroup {
             ProductListView(store: Store(initialState: ProductListDomain.State(),
                                               reducer: ProductListDomain.reducer,
-                                              environment: ProductListDomain.Environment(fetchProducts: {
-                MockFactory.createProductArray(id: .tshirt, quantity: 3)
-            })))
+                                              environment: ProductListDomain.Environment()))
         }
     }
 }

@@ -12,21 +12,27 @@ struct ProductListDomain {
     struct State: Equatable {
         var productList: IdentifiedArrayOf<ProductDomain.State> = []
         var checkoutCartState = CheckoutListDomain.State()
+        var totalPrice = 0.0
         var shouldGoToCheckout = false
-        var shouldShowCheckoutButton: Bool {
-            productList.map { $0.count }.reduce(0,+) > 0
-        }
+        var shouldShowCheckoutButton = false
     }
     
     enum Action: Equatable {
         case fetchProducts
         case fetchProductsResponse(TaskResult<[Product]>)
         case product(id: ProductDomain.State.ID, action: ProductDomain.Action)
+        case getCheckoutButtonState
+        case getTotalPrice
         case goToCheckout
     }
     
     struct Environment {
-        var fetchProducts: () async throws -> [Product]
+        func fetchProducts() async throws -> [Product] {
+            let url = URL(string: "https://gist.githubusercontent.com/palcalde/6c19259bd32dd6aafa327fa557859c2f/raw/ba51779474a150ee4367cda4f4ffacdcca479887/Products.json")!
+            let (data, _) = try await URLSession.shared.data(from: url)
+            let productsData = try JSONDecoder().decode([String:[Product]].self, from: data)
+            return productsData["products"] ?? []
+        }
     }
     
     static let reducer = AnyReducer<State, Action, Environment>
@@ -55,6 +61,14 @@ struct ProductListDomain {
                     return .none
                     
                 case .product(id: let id, action: let action):
+                    return .send(.getCheckoutButtonState)
+                    
+                case .getCheckoutButtonState:
+                    state.shouldShowCheckoutButton = state.productList.map { $0.count }.reduce(0,+) > 0
+                    return .send(.getTotalPrice)
+                    
+                case .getTotalPrice:
+                    state.totalPrice = state.productList.map { $0.product.price * Double($0.count) }.reduce(0,+)
                     return .none
                     
                 case .goToCheckout:
@@ -69,5 +83,5 @@ struct ProductListDomain {
                     return .none
                 }
             }
-        )
+        ).debug()
 }

@@ -26,12 +26,13 @@ struct CheckoutStyle: ButtonStyle {
             .foregroundColor(.white)
             .cornerRadius(.infinity)
             .shadow(radius: 10)
+            .shadow(radius: 10)
             .padding()
         } else {
             Text("Choose your product")
                 .font(.custom("Helvetica Neue", size: 16))
                 .fontWeight(.medium)
-                .background(.white)
+                .background(.clear)
                 .foregroundColor(.moradul)
                 .padding(30)
         }
