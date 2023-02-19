@@ -12,9 +12,8 @@ struct ProductListDomain {
     struct State: Equatable {
         var productList: IdentifiedArrayOf<ProductDomain.State> = []
         var checkoutCartState = CheckoutListDomain.State()
-        var totalPrice = 0.0
+        var checkoutButtonState = CheckoutButtonDomain.State()
         var shouldGoToCheckout = false
-        var shouldShowCheckoutButton = false
     }
     
     enum Action: Equatable {
@@ -23,6 +22,7 @@ struct ProductListDomain {
         case product(id: ProductDomain.State.ID, action: ProductDomain.Action)
         case getCheckoutButtonState
         case getTotalPrice
+        case checkoutButton(CheckoutButtonDomain.Action)
         case goToCheckout
     }
     
@@ -64,12 +64,15 @@ struct ProductListDomain {
                     return .send(.getCheckoutButtonState)
                     
                 case .getCheckoutButtonState:
-                    state.shouldShowCheckoutButton = state.productList.map { $0.count }.reduce(0,+) > 0
+                    state.checkoutButtonState.shouldShowCheckoutButton = state.productList.map { $0.count }.reduce(0,+) > 0
                     return .send(.getTotalPrice)
                     
                 case .getTotalPrice:
-                    state.totalPrice = state.productList.map { $0.product.price * Double($0.count) }.reduce(0,+)
+                    state.checkoutButtonState.totalPrice = state.productList.map { $0.product.price * Double($0.count) }.reduce(0,+)
                     return .none
+                    
+                case .checkoutButton(let action):
+                    return .send(.goToCheckout)
                     
                 case .goToCheckout:
                     state.checkoutCartState.productGroups = IdentifiedArray(uniqueElements: state.productList.compactMap { state in

@@ -31,33 +31,16 @@ struct ProductListView: View {
                 
                 Spacer()
                 
-                ZStack {
-                    Button {
-                        viewStore.send(.goToCheckout)
-                    } label: {
-                        Text("Go to Checkout")
-                    }
-                    .buttonStyle(.checkout)
-                    .disabled(!viewStore.shouldShowCheckoutButton)
-                    .animation(.easeIn(duration: 0.2), value: viewStore.shouldShowCheckoutButton)
-                    
-                    HStack {
-                        Spacer()
-                        
-                        if !viewStore.totalPrice.isZero {
-                            Text(viewStore.totalPrice.euroFormattedString)
-                                .font(.custom("Helvetica Neue", size: 14))
-                                .foregroundColor(.white)
-                                .padding(24)
-                        }
-                    }
-                }
+                CheckoutButton(store: self.store.scope(state: \.checkoutButtonState,
+                                                       action: ProductListDomain.Action.checkoutButton))
+                
                 .navigationDestination(isPresented: viewStore.binding(get: \.shouldGoToCheckout, send: .goToCheckout)) {
                     CheckoutList(store: Store(initialState: viewStore.checkoutCartState,
                                               reducer: CheckoutListDomain.reducer,
                                               environment: CheckoutListDomain.Environment()))
                 }
             }
+            .tint(.moradul)
         }
     }
 }
