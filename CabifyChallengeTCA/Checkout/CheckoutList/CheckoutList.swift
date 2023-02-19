@@ -13,15 +13,40 @@ struct CheckoutList: View {
     
     var body: some View {
         WithViewStore(self.store) { viewStore in
-            List {
-                ForEachStore(store.scope(state: \.productGroups,
-                                         action: CheckoutListDomain.Action.productGroup(id:action:))) {
-                    ProductGroupCell(store: $0)
+            VStack {
+                List {
+                    ForEachStore(store.scope(state: \.productGroups,
+                                             action: CheckoutListDomain.Action.productGroup(id:action:))) {
+                        ProductGroupCell(store: $0)
+                    }
+                    
+                    HStack(alignment: .top) {
+                        Spacer()
+                        
+                        Text("Total amount:")
+                            .font(.custom("Helvetica Neue", size: 16))
+                            .fontWeight(.bold)
+                            .padding(.horizontal)
+                        
+                        Text(viewStore.totalAmount.euroFormattedString)
+                            .font(.custom("Helvetica Neue", size: 16))
+                            .fontWeight(.bold)
+                    }
+                    .padding(.vertical)
                 }
+                .listStyle(.plain)
+                
+                Button {
+                    viewStore.send(.showAlert)
+                } label: {
+                    Text("Buy")
+                }
+                .buttonStyle(.checkout)
             }
-            .listStyle(.plain)
-            .onDisappear {
-                viewStore.send(.goBack)
+            .alert("Thank you", isPresented: viewStore.binding(get: \.shouldShowBuyDialog,
+                                                               send: CheckoutListDomain.Action.dismissAlert)) {
+            } message: {
+                Text("You made a purchase of \(viewStore.totalAmount.euroFormattedString).")
             }
         }
     }
@@ -29,8 +54,10 @@ struct CheckoutList: View {
 
 struct CheckoutList_Previews: PreviewProvider {
     static var previews: some View {
-        CheckoutList(store: Store(initialState: CheckoutListDomain.State(),
-                                  reducer: CheckoutListDomain.reducer,
-                                  environment: CheckoutListDomain.Environment()))
+        CheckoutList(
+            store: Store(initialState: CheckoutListDomain.State(productGroups: IdentifiedArray(uniqueElements: [ProductGroupDomain.State(id: UUID(), productGroup: MockFactory.voucherProductGroupExample), ProductGroupDomain.State(id: UUID(), productGroup: MockFactory.voucherProductGroupExample)]), totalAmount: 0),
+                         reducer: CheckoutListDomain.reducer,
+                         environment: CheckoutListDomain.Environment())
+        )
     }
 }

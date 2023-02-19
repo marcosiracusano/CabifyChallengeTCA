@@ -24,6 +24,7 @@ struct ProductGroupCell: View {
                     .font(.custom("Helvetica Neue", size: 16))
                     .fontWeight(.bold)
             }
+            .padding(.vertical)
         }
     }
 }

@@ -86,6 +86,7 @@ struct ProductListDomain {
                     
                 case .getTotalPrice:
                     state.chooseProductButton.totalPrice = state.productList.map { $0.product.price * Double($0.count) }.reduce(0,+)
+                    state.checkoutList.totalAmount = state.productList.map { $0.product.price * Double($0.count) }.reduce(0,+)
                     return .none
                     
                 case .chooseProductButton(let action):
