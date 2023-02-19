@@ -14,9 +14,11 @@ struct ProductListDomain {
         var chooseProductButton = ChooseProductButtonDomain.State()
         var checkoutList = CheckoutListDomain.State()
         var shouldGoToCheckout = false
+        var viewDidLoad = false
     }
     
     enum Action: Equatable {
+        case onAppear
         case fetchProducts
         case fetchProductsResponse(TaskResult<[Product]>)
         case product(id: ProductDomain.State.ID, action: ProductDomain.Action)
@@ -48,8 +50,17 @@ struct ProductListDomain {
             
             .init { state, action, environment in
                 switch action {
-                case .fetchProducts:
+                case .onAppear:
                     state.shouldGoToCheckout = false
+                    
+                    if state.viewDidLoad {
+                        return .none
+                    } else {
+                        state.viewDidLoad = true
+                        return .send(.fetchProducts)
+                    }
+                    
+                case .fetchProducts:
                     return .task {
                         await .fetchProductsResponse(
                             TaskResult(catching: {

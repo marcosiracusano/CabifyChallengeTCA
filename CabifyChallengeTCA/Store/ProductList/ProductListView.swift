@@ -22,8 +22,8 @@ struct ProductListView: View {
                 }
                 .listStyle(.plain)
                 .navigationTitle("Cabify Store")
-                .task {
-                    viewStore.send(.fetchProducts)
+                .onAppear {
+                    viewStore.send(.onAppear)
                 }
                 .refreshable {
                     viewStore.send(.fetchProducts)
