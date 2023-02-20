@@ -18,10 +18,5 @@ struct TotalAmountDomain {
     
     struct Environment {}
     
-    static let reducer = AnyReducer<State, Action, Environment> { state, action, environment in
-//        switch action {
-//
-//        }
-            .none
-    }
+    static let reducer = AnyReducer<State, Action, Environment> { _ in }
 }

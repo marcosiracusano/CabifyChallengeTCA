@@ -53,8 +53,8 @@ final class ProductTests: XCTestCase {
         )
         
         for i in 1...quantity {
-            store.send(.tapButton(.didTapPlusButton)) { state in
-                state.plusMinusButton.count = i
+            store.send(.tapButton(.didTapPlusButton)) {
+                $0.plusMinusButton.count = i
             }
             store.receive(.getTotalPrice) {
                 $0.totalPrice = discount.applyDiscount(quantity: i, unitPrice: product.price)
@@ -75,8 +75,8 @@ final class ProductTests: XCTestCase {
         )
         
         for i in 1...quantity {
-            store.send(.tapButton(.didTapPlusButton)) { state in
-                state.plusMinusButton.count = i
+            store.send(.tapButton(.didTapPlusButton)) {
+                $0.plusMinusButton.count = i
             }
             store.receive(.getTotalPrice) {
                 $0.totalPrice = Double(i) * product.price
@@ -95,8 +95,8 @@ final class ProductTests: XCTestCase {
             environment: ProductDomain.Environment()
         )
         
-        store.send(.getDescription) { state in
-            state.description = DiscountHelper.getDiscount(id: product.id)?.description ?? ""
+        store.send(.getDescription) {
+            $0.description = DiscountHelper.getDiscount(id: product.id)?.description ?? ""
         }
     }
 }

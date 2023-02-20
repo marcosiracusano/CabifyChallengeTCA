@@ -36,6 +36,8 @@
 		EEDCABDC29A3F73D005245E2 /* PlusMinusButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDCABDB29A3F73D005245E2 /* PlusMinusButtonTests.swift */; };
 		EEDCABDE29A3FB13005245E2 /* ProductTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDCABDD29A3FB12005245E2 /* ProductTests.swift */; };
 		EEDCABE029A41CF7005245E2 /* ChooseProductButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDCABDF29A41CF7005245E2 /* ChooseProductButtonTests.swift */; };
+		EEDCABE229A41DCB005245E2 /* ProductListDomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDCABE129A41DCB005245E2 /* ProductListDomainTests.swift */; };
+		EEDCABE629A43091005245E2 /* ProductGroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDCABE529A43091005245E2 /* ProductGroupTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,8 @@
 		EEDCABDB29A3F73D005245E2 /* PlusMinusButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusMinusButtonTests.swift; sourceTree = "<group>"; };
 		EEDCABDD29A3FB12005245E2 /* ProductTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTests.swift; sourceTree = "<group>"; };
 		EEDCABDF29A41CF7005245E2 /* ChooseProductButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseProductButtonTests.swift; sourceTree = "<group>"; };
+		EEDCABE129A41DCB005245E2 /* ProductListDomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListDomainTests.swift; sourceTree = "<group>"; };
+		EEDCABE529A43091005245E2 /* ProductGroupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductGroupTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,9 +163,8 @@
 		EED116F929A0454A009D939E /* CabifyChallengeTCATests */ = {
 			isa = PBXGroup;
 			children = (
-				EEDCABDB29A3F73D005245E2 /* PlusMinusButtonTests.swift */,
-				EEDCABDD29A3FB12005245E2 /* ProductTests.swift */,
-				EEDCABDF29A41CF7005245E2 /* ChooseProductButtonTests.swift */,
+				EEDCABE329A42FAA005245E2 /* Store */,
+				EEDCABE429A42FB2005245E2 /* Checkout */,
 			);
 			path = CabifyChallengeTCATests;
 			sourceTree = "<group>";
@@ -254,6 +257,25 @@
 				EEDCABD729A3D3C7005245E2 /* TotalAmountView.swift */,
 			);
 			path = TotalAmount;
+			sourceTree = "<group>";
+		};
+		EEDCABE329A42FAA005245E2 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				EEDCABDB29A3F73D005245E2 /* PlusMinusButtonTests.swift */,
+				EEDCABDD29A3FB12005245E2 /* ProductTests.swift */,
+				EEDCABDF29A41CF7005245E2 /* ChooseProductButtonTests.swift */,
+				EEDCABE129A41DCB005245E2 /* ProductListDomainTests.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		EEDCABE429A42FB2005245E2 /* Checkout */ = {
+			isa = PBXGroup;
+			children = (
+				EEDCABE529A43091005245E2 /* ProductGroupTests.swift */,
+			);
+			path = Checkout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -394,7 +416,9 @@
 			files = (
 				EEDCABDC29A3F73D005245E2 /* PlusMinusButtonTests.swift in Sources */,
 				EEDCABDE29A3FB13005245E2 /* ProductTests.swift in Sources */,
+				EEDCABE629A43091005245E2 /* ProductGroupTests.swift in Sources */,
 				EEDCABE029A41CF7005245E2 /* ChooseProductButtonTests.swift in Sources */,
+				EEDCABE229A41DCB005245E2 /* ProductListDomainTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

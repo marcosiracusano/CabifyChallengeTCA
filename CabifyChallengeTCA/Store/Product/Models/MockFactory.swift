@@ -14,6 +14,9 @@ class MockFactory {
     static private let mugProduct = Product(code: "MUG", name: "Cabify Coffee Mug", price: 7.5)
     
     static let voucherProductGroupExample = ProductGroup(product: voucherProduct, quantity: 5)
+    static let mugProductGroupExample = ProductGroup(product: mugProduct, quantity: 5)
+    
+    static let fetchSuccessExample = [voucherProduct, tshirtProduct, mugProduct]
     
     static func getProduct(_ id: ProductId) -> Product? {
         switch id {

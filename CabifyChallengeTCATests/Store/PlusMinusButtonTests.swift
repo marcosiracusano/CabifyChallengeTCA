@@ -20,8 +20,8 @@ final class PlusMinusButtonTests: XCTestCase {
         
         let initialCount = store.state.count
         
-        store.send(.didTapPlusButton) { state in
-            state.count = initialCount + 1
+        store.send(.didTapPlusButton) {
+            $0.count = initialCount + 1
         }
     }
     
@@ -32,8 +32,8 @@ final class PlusMinusButtonTests: XCTestCase {
         
         let initialCount = store.state.count
         
-        store.send(.didTapMinusButton) { state in
-            state.count = initialCount - 1
+        store.send(.didTapMinusButton) {
+            $0.count = initialCount - 1
         }
     }
 }
