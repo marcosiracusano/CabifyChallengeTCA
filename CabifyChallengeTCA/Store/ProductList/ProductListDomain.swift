@@ -105,5 +105,5 @@ struct ProductListDomain {
                     return .none
                 }
             }
-        ).debug()
+        )
 }

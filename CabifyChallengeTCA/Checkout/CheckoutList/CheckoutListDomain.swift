@@ -13,6 +13,9 @@ struct CheckoutListDomain {
     struct State: Equatable {
         var productGroups: IdentifiedArrayOf<ProductGroupDomain.State> = []
         var totalPrice = 0.0
+        var totalSavings: Double {
+            productGroups.map { $0.savings }.reduce(0,+)
+        }
         var shouldShowBuyDialog = false
     }
     
@@ -44,5 +47,5 @@ struct CheckoutListDomain {
                     return .none
                 }
             }
-        ).debug()
+        )
 }

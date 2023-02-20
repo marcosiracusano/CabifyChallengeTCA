@@ -14,17 +14,28 @@ struct ProductGroupCell: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             HStack {
-                Text("\(viewStore.state.productGroup.quantity) x \(viewStore.state.productGroup.product.name)")
+                Text("\(viewStore.productGroup.quantity) x \(viewStore.productGroup.product.name)")
                     .font(.custom("Helvetica Neue", size: 16))
                     .fontWeight(.medium)
                 
                 Spacer()
                 
-                Text(viewStore.state.productGroup.product.price.euroFormattedString)
+                if viewStore.shouldShowStrikethroughPrice {
+                    Text(viewStore.fullPrice.euroFormattedString)
+                        .font(.custom("Helvetica Neue", size: 14))
+                        .foregroundColor(.gray)
+                        .strikethrough()
+                        .padding(.horizontal)
+                }
+                
+                Text(viewStore.discountedPrice.euroFormattedString)
                     .font(.custom("Helvetica Neue", size: 16))
                     .fontWeight(.bold)
             }
             .padding(.vertical)
+            .onAppear {
+                viewStore.send(.onAppear)
+            }
         }
     }
 }

@@ -13,14 +13,50 @@ struct ProductGroupDomain {
     struct State: Equatable, Identifiable {
         var id: UUID
         var productGroup: ProductGroup
+        var fullPrice = 0.0
+        var discountedPrice = 0.0
+        var savings: Double {
+            fullPrice - discountedPrice
+        }
+        var shouldShowStrikethroughPrice = false
     }
     
-    enum Action: Equatable {}
+    enum Action: Equatable {
+        case onAppear
+        case getFullPrice
+        case getDiscountedPrice
+    }
     
     struct Environment {}
     
-    static let reducer = AnyReducer<State, Action, Environment>
-        .combine(
+    static let reducer = AnyReducer<State, Action, Environment> { state, action, environment in
+        switch action {
+        case .onAppear:
+            return .send(.getFullPrice)
             
-        )
+        case .getFullPrice:
+            state.fullPrice = Double(state.productGroup.quantity) * state.productGroup.product.price
+            return .send(.getDiscountedPrice)
+            
+        case .getDiscountedPrice:
+            if let discount = getDiscount(id: state.productGroup.product.id) {
+                state.discountedPrice = discount.applyDiscount(quantity: state.productGroup.quantity, unitPrice: state.productGroup.product.price)
+                state.shouldShowStrikethroughPrice = true
+            } else {
+                state.discountedPrice = state.fullPrice
+            }
+            return .none
+        }
+    }
+    
+    private static func getDiscount(id: ProductId) -> (any Discount)? {
+        switch id {
+        case .voucher:
+            return TwoForOne()
+        case .tshirt:
+            return Bulk(bulkLimit: 3, discountPrice: 19)
+        default:
+            return nil
+        }
+    }
 }

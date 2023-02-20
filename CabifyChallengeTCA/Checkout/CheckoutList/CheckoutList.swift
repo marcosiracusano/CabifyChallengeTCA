@@ -13,24 +13,42 @@ struct CheckoutList: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            VStack {
+            NavigationStack {
                 List {
                     ForEachStore(store.scope(state: \.productGroups,
                                              action: CheckoutListDomain.Action.productGroup(id:action:))) {
                         ProductGroupCell(store: $0)
                     }
                     
-                    HStack(alignment: .top) {
-                        Spacer()
+                    VStack {
+                        HStack(alignment: .top) {
+                            Spacer()
+                            
+                            Text("Total amount:")
+                                .font(.custom("Helvetica Neue", size: 16))
+                                .fontWeight(.bold)
+                                .padding(.horizontal)
+                            
+                            Text(viewStore.totalPrice.euroFormattedString)
+                                .font(.custom("Helvetica Neue", size: 16))
+                                .fontWeight(.bold)
+                        }
                         
-                        Text("Total amount:")
-                            .font(.custom("Helvetica Neue", size: 16))
-                            .fontWeight(.bold)
-                            .padding(.horizontal)
-                        
-                        Text(viewStore.totalPrice.euroFormattedString)
-                            .font(.custom("Helvetica Neue", size: 16))
-                            .fontWeight(.bold)
+                        if !viewStore.totalSavings.isZero {
+                            HStack(alignment: .top) {
+                                Spacer()
+                                
+                                Text("You save:")
+                                    .font(.custom("Helvetica Neue", size: 14))
+                                    .foregroundColor(.gray)
+                                    .padding(.horizontal)
+                                
+                                Text(viewStore.totalSavings.euroFormattedString)
+                                    .font(.custom("Helvetica Neue", size: 14))
+                                    .foregroundColor(.gray)
+                            }
+                            .padding(.top, 5)
+                        }
                     }
                     .padding(.vertical)
                 }
@@ -43,6 +61,7 @@ struct CheckoutList: View {
                 }
                 .buttonStyle(.checkout)
             }
+            .navigationTitle("Checkout")
             .alert("Thank you", isPresented: viewStore.binding(get: \.shouldShowBuyDialog,
                                                                send: CheckoutListDomain.Action.dismissAlert)) {
             } message: {
