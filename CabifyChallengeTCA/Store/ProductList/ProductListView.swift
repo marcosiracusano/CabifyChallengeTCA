@@ -12,7 +12,7 @@ struct ProductListView: View {
     let store: Store<ProductListDomain.State, ProductListDomain.Action>
     
     var body: some View {
-        WithViewStore(self.store) { viewStore in
+        WithViewStore(store) { viewStore in
             NavigationStack {
                 List {
                     ForEachStore(store.scope(state: \.productList,
@@ -31,7 +31,7 @@ struct ProductListView: View {
                 
                 Spacer()
                 
-                ChooseProductButton(store: self.store.scope(state: \.chooseProductButton,
+                ChooseProductButton(store: store.scope(state: \.chooseProductButton,
                                                        action: ProductListDomain.Action.chooseProductButton))
                 
                 .navigationDestination(isPresented: viewStore.binding(get: \.shouldGoToCheckout,

@@ -30,7 +30,7 @@ struct ProductCell: View {
                         .font(.custom("Helvetica Neue", size: 14))
                         .padding(.bottom, 5)
                     
-                    Text(viewStore.product.discount?.description ?? "")
+                    Text(viewStore.description)
                         .font(.custom("Helvetica Neue Italic", size: 10))
                 }
                 .padding(.leading, 16)
@@ -41,6 +41,9 @@ struct ProductCell: View {
                                                         action: ProductDomain.Action.tapButton))
             }
             .padding(.init(top: 16, leading: 0, bottom: 16, trailing: 0))
+            .onAppear {
+                viewStore.send(.onAppear)
+            }
         }
     }
 }

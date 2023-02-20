@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Discount {
+protocol Discount: Equatable {
     var description: String { get }
     func applyDiscount(quantity: Int, unitPrice: Double) -> Double
     func discountDoesApply(quantity: Int, unitPrice: Double) -> Bool

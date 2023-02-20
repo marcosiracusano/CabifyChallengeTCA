@@ -12,7 +12,7 @@ struct CheckoutListDomain {
     
     struct State: Equatable {
         var productGroups: IdentifiedArrayOf<ProductGroupDomain.State> = []
-        var totalAmount = 0.0
+        var totalPrice = 0.0
         var shouldShowBuyDialog = false
     }
     

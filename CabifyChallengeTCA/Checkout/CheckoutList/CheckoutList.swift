@@ -12,7 +12,7 @@ struct CheckoutList: View {
     let store: Store<CheckoutListDomain.State, CheckoutListDomain.Action>
     
     var body: some View {
-        WithViewStore(self.store) { viewStore in
+        WithViewStore(store) { viewStore in
             VStack {
                 List {
                     ForEachStore(store.scope(state: \.productGroups,
@@ -28,7 +28,7 @@ struct CheckoutList: View {
                             .fontWeight(.bold)
                             .padding(.horizontal)
                         
-                        Text(viewStore.totalAmount.euroFormattedString)
+                        Text(viewStore.totalPrice.euroFormattedString)
                             .font(.custom("Helvetica Neue", size: 16))
                             .fontWeight(.bold)
                     }
@@ -46,7 +46,7 @@ struct CheckoutList: View {
             .alert("Thank you", isPresented: viewStore.binding(get: \.shouldShowBuyDialog,
                                                                send: CheckoutListDomain.Action.dismissAlert)) {
             } message: {
-                Text("You made a purchase of \(viewStore.totalAmount.euroFormattedString).")
+                Text("You made a purchase of \(viewStore.totalPrice.euroFormattedString).")
             }
         }
     }
@@ -55,7 +55,7 @@ struct CheckoutList: View {
 struct CheckoutList_Previews: PreviewProvider {
     static var previews: some View {
         CheckoutList(
-            store: Store(initialState: CheckoutListDomain.State(productGroups: IdentifiedArray(uniqueElements: [ProductGroupDomain.State(id: UUID(), productGroup: MockFactory.voucherProductGroupExample), ProductGroupDomain.State(id: UUID(), productGroup: MockFactory.voucherProductGroupExample)]), totalAmount: 0),
+            store: Store(initialState: CheckoutListDomain.State(productGroups: IdentifiedArray(uniqueElements: [ProductGroupDomain.State(id: UUID(), productGroup: MockFactory.voucherProductGroupExample), ProductGroupDomain.State(id: UUID(), productGroup: MockFactory.voucherProductGroupExample)])),
                          reducer: CheckoutListDomain.reducer,
                          environment: CheckoutListDomain.Environment())
         )

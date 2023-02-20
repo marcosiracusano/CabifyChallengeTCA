@@ -31,14 +31,4 @@ struct Product: Decodable, Equatable {
     var id: ProductId {
         ProductId.allCases.filter { $0.rawValue == self.code.lowercased() }.first ?? .unknown
     }
-    var discount: Discount? {
-        switch id {
-        case .voucher:
-            return TwoForOne()
-        case .tshirt:
-            return Bulk(bulkLimit: 3, discountPrice: 19)
-        default:
-            return nil
-        }
-    }
 }
