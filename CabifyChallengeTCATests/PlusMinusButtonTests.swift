@@ -7,15 +7,16 @@
 
 import XCTest
 import ComposableArchitecture
-
 @testable import CabifyChallengeTCA
 
 final class PlusMinusButtonTests: XCTestCase {
 
     func test_didTapPlusButton_shouldIncrementCountByOne() {
-        let store = TestStore(initialState: PlusMinusButtonDomain.State(),
-                              reducer: PlusMinusButtonDomain.reducer,
-                              environment: PlusMinusButtonDomain.Environment())
+        let store = TestStore(
+            initialState: PlusMinusButtonDomain.State(),
+            reducer: PlusMinusButtonDomain.reducer,
+            environment: PlusMinusButtonDomain.Environment()
+        )
         
         let initialCount = store.state.count
         
@@ -24,7 +25,7 @@ final class PlusMinusButtonTests: XCTestCase {
         }
     }
     
-    func test_didTapMinusButton_shouldIncrementCountByOne() {
+    func test_didTapMinusButton_shouldDecreaseCountByOne() {
         let store = TestStore(initialState: PlusMinusButtonDomain.State(),
                               reducer: PlusMinusButtonDomain.reducer,
                               environment: PlusMinusButtonDomain.Environment())

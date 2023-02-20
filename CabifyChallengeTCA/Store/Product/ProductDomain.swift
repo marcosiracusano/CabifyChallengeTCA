@@ -38,6 +38,7 @@ struct ProductDomain {
                                              environment: { _ in
                                                  PlusMinusButtonDomain.Environment()
                                              }),
+            
             .init { state, action, environment in
                 switch action {
                 case .onAppear:
@@ -51,12 +52,12 @@ struct ProductDomain {
                     return .send(.getTotalPrice)
                     
                 case .getDescription:
-                    let discount = getDiscount(id: state.product.id)
+                    let discount = DiscountHelper.getDiscount(id: state.product.id)
                     state.description = discount?.description ?? ""
                     return .none
                     
                 case .getTotalPrice:
-                    if let discount = getDiscount(id: state.product.id) {
+                    if let discount = DiscountHelper.getDiscount(id: state.product.id) {
                         state.totalPrice = discount.applyDiscount(quantity: state.count, unitPrice: state.product.price)
                     } else {
                         state.totalPrice = Double(state.count) * state.product.price
@@ -65,8 +66,10 @@ struct ProductDomain {
                 }
             }
         )
-    
-    private static func getDiscount(id: ProductId) -> (any Discount)? {
+}
+
+struct DiscountHelper {
+    static func getDiscount(id: ProductId) -> (any Discount)? {
         switch id {
         case .voucher:
             return TwoForOne()

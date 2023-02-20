@@ -39,24 +39,13 @@ struct ProductGroupDomain {
             return .send(.getDiscountedPrice)
             
         case .getDiscountedPrice:
-            if let discount = getDiscount(id: state.productGroup.product.id) {
+            if let discount = DiscountHelper.getDiscount(id: state.productGroup.product.id) {
                 state.discountedPrice = discount.applyDiscount(quantity: state.productGroup.quantity, unitPrice: state.productGroup.product.price)
                 state.shouldShowStrikethroughPrice = true
             } else {
                 state.discountedPrice = state.fullPrice
             }
             return .none
-        }
-    }
-    
-    private static func getDiscount(id: ProductId) -> (any Discount)? {
-        switch id {
-        case .voucher:
-            return TwoForOne()
-        case .tshirt:
-            return Bulk(bulkLimit: 3, discountPrice: 19)
-        default:
-            return nil
         }
     }
 }
