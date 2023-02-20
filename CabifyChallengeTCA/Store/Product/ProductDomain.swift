@@ -67,16 +67,3 @@ struct ProductDomain {
             }
         )
 }
-
-struct DiscountHelper {
-    static func getDiscount(id: ProductId) -> (any Discount)? {
-        switch id {
-        case .voucher:
-            return TwoForOne()
-        case .tshirt:
-            return Bulk(bulkLimit: 3, discountPrice: 19)
-        default:
-            return nil
-        }
-    }
-}

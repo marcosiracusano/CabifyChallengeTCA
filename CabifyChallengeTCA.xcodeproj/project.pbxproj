@@ -38,6 +38,8 @@
 		EEDCABE029A41CF7005245E2 /* ChooseProductButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDCABDF29A41CF7005245E2 /* ChooseProductButtonTests.swift */; };
 		EEDCABE229A41DCB005245E2 /* ProductListDomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDCABE129A41DCB005245E2 /* ProductListDomainTests.swift */; };
 		EEDCABE629A43091005245E2 /* ProductGroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDCABE529A43091005245E2 /* ProductGroupTests.swift */; };
+		EEDCABE829A434DB005245E2 /* CheckoutListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDCABE729A434DB005245E2 /* CheckoutListTests.swift */; };
+		EEDCABEB29A43FDF005245E2 /* DiscountHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDCABEA29A43FDF005245E2 /* DiscountHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		EEDCABDF29A41CF7005245E2 /* ChooseProductButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseProductButtonTests.swift; sourceTree = "<group>"; };
 		EEDCABE129A41DCB005245E2 /* ProductListDomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListDomainTests.swift; sourceTree = "<group>"; };
 		EEDCABE529A43091005245E2 /* ProductGroupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductGroupTests.swift; sourceTree = "<group>"; };
+		EEDCABE729A434DB005245E2 /* CheckoutListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutListTests.swift; sourceTree = "<group>"; };
+		EEDCABEA29A43FDF005245E2 /* DiscountHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				EED1171E29A0E3B9009D939E /* Main */,
+				EEDCABE929A43F9C005245E2 /* Utils */,
 				EED1173E29A1454E009D939E /* Store */,
 				EED1173929A14433009D939E /* Checkout */,
 				EED116EF29A0454A009D939E /* Preview Content */,
@@ -192,7 +197,6 @@
 			isa = PBXGroup;
 			children = (
 				EED116E929A04549009D939E /* CabifyChallengeTCAApp.swift */,
-				EED1173229A0E9F8009D939E /* Extensions.swift */,
 				EED116ED29A0454A009D939E /* Assets.xcassets */,
 			);
 			path = Main;
@@ -201,7 +205,6 @@
 		EED1172B29A0E4A6009D939E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EED1173029A0E97B009D939E /* MockFactory.swift */,
 				EED1171F29A0E409009D939E /* Product.swift */,
 				EED1172329A0E43A009D939E /* Discount.swift */,
 				EED1172529A0E444009D939E /* Bulk.swift */,
@@ -274,8 +277,19 @@
 			isa = PBXGroup;
 			children = (
 				EEDCABE529A43091005245E2 /* ProductGroupTests.swift */,
+				EEDCABE729A434DB005245E2 /* CheckoutListTests.swift */,
 			);
 			path = Checkout;
+			sourceTree = "<group>";
+		};
+		EEDCABE929A43F9C005245E2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				EED1173029A0E97B009D939E /* MockFactory.swift */,
+				EED1173229A0E9F8009D939E /* Extensions.swift */,
+				EEDCABEA29A43FDF005245E2 /* DiscountHelper.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -400,6 +414,7 @@
 				EE1F9CB329A188AB00C04048 /* ProductGroupCell.swift in Sources */,
 				EED1174029A14678009D939E /* ProductGroupDomain.swift in Sources */,
 				EE1F9CAE29A1794900C04048 /* CheckoutStyle.swift in Sources */,
+				EEDCABEB29A43FDF005245E2 /* DiscountHelper.swift in Sources */,
 				EED1172029A0E409009D939E /* Product.swift in Sources */,
 				EED1173329A0E9F8009D939E /* Extensions.swift in Sources */,
 				EEDCABDA29A3D438005245E2 /* TotalAmountDomain.swift in Sources */,
@@ -419,6 +434,7 @@
 				EEDCABE629A43091005245E2 /* ProductGroupTests.swift in Sources */,
 				EEDCABE029A41CF7005245E2 /* ChooseProductButtonTests.swift in Sources */,
 				EEDCABE229A41DCB005245E2 /* ProductListDomainTests.swift in Sources */,
+				EEDCABE829A434DB005245E2 /* CheckoutListTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
