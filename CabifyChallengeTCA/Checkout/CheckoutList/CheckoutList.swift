@@ -20,39 +20,11 @@ struct CheckoutList: View {
                         ProductGroupCell(store: $0)
                     }
                     
-                    VStack {
-                        HStack(alignment: .top) {
-                            Spacer()
-                            
-                            Text("Total amount:")
-                                .font(.custom("Helvetica Neue", size: 16))
-                                .fontWeight(.bold)
-                                .padding(.horizontal)
-                            
-                            Text(viewStore.totalPrice.euroFormattedString)
-                                .font(.custom("Helvetica Neue", size: 16))
-                                .fontWeight(.bold)
-                        }
-                        
-                        if !viewStore.totalSavings.isZero {
-                            HStack(alignment: .top) {
-                                Spacer()
-                                
-                                Text("You save:")
-                                    .font(.custom("Helvetica Neue", size: 14))
-                                    .foregroundColor(.gray)
-                                    .padding(.horizontal)
-                                
-                                Text(viewStore.totalSavings.euroFormattedString)
-                                    .font(.custom("Helvetica Neue", size: 14))
-                                    .foregroundColor(.gray)
-                            }
-                            .padding(.top, 5)
-                        }
-                    }
-                    .padding(.vertical)
+                    TotalAmountView(store: store.scope(state: \.totalAmount,
+                                                       action: CheckoutListDomain.Action.totalAmount))
                 }
                 .listStyle(.plain)
+                .scrollDisabled(true)
                 
                 Button {
                     viewStore.send(.showAlert)
@@ -65,7 +37,7 @@ struct CheckoutList: View {
             .alert("Thank you", isPresented: viewStore.binding(get: \.shouldShowBuyDialog,
                                                                send: CheckoutListDomain.Action.dismissAlert)) {
             } message: {
-                Text("You made a purchase of \(viewStore.totalPrice.euroFormattedString).")
+                Text("You made a purchase of \(viewStore.totalAmount.totalPrice.euroFormattedString).")
             }
         }
     }

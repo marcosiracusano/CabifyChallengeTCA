@@ -12,15 +12,13 @@ struct CheckoutListDomain {
     
     struct State: Equatable {
         var productGroups: IdentifiedArrayOf<ProductGroupDomain.State> = []
-        var totalPrice = 0.0
-        var totalSavings: Double {
-            productGroups.map { $0.savings }.reduce(0,+)
-        }
+        var totalAmount = TotalAmountDomain.State()
         var shouldShowBuyDialog = false
     }
     
     enum Action: Equatable {
         case productGroup(id: ProductGroupDomain.State.ID, action: ProductGroupDomain.Action)
+        case totalAmount(TotalAmountDomain.Action)
         case showAlert
         case dismissAlert
     }
@@ -36,6 +34,14 @@ struct CheckoutListDomain {
             .init { state, action, environment in
                 switch action {
                 case .productGroup(id: let id, action: let action):
+                    switch action {
+                    case .getDiscountedPrice:
+                        state.totalAmount.totalSavings = state.productGroups.map { $0.savings }.reduce(0,+)
+                    default: break
+                    }
+                    return .none
+                    
+                case .totalAmount(let action):
                     return .none
                     
                 case .showAlert:
