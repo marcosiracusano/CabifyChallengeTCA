@@ -16,7 +16,6 @@
 		EED116EA29A04549009D939E /* CabifyChallengeTCAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED116E929A04549009D939E /* CabifyChallengeTCAApp.swift */; };
 		EED116EE29A0454A009D939E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EED116ED29A0454A009D939E /* Assets.xcassets */; };
 		EED116F129A0454A009D939E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EED116F029A0454A009D939E /* Preview Assets.xcassets */; };
-		EED116FB29A0454A009D939E /* CabifyChallengeTCATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED116FA29A0454A009D939E /* CabifyChallengeTCATests.swift */; };
 		EED1171729A04A54009D939E /* PlusMinusButtonDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1171629A04A54009D939E /* PlusMinusButtonDomain.swift */; };
 		EED1171929A0DE4A009D939E /* PlusMinusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1171829A0DE4A009D939E /* PlusMinusButton.swift */; };
 		EED1172029A0E409009D939E /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1171F29A0E409009D939E /* Product.swift */; };
@@ -34,6 +33,7 @@
 		EED1174029A14678009D939E /* ProductGroupDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1173F29A14678009D939E /* ProductGroupDomain.swift */; };
 		EEDCABD829A3D3C7005245E2 /* TotalAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDCABD729A3D3C7005245E2 /* TotalAmountView.swift */; };
 		EEDCABDA29A3D438005245E2 /* TotalAmountDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDCABD929A3D438005245E2 /* TotalAmountDomain.swift */; };
+		EEDCABDC29A3F73D005245E2 /* PlusMinusButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDCABDB29A3F73D005245E2 /* PlusMinusButtonTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +57,6 @@
 		EED116ED29A0454A009D939E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EED116F029A0454A009D939E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EED116F629A0454A009D939E /* CabifyChallengeTCATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CabifyChallengeTCATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EED116FA29A0454A009D939E /* CabifyChallengeTCATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabifyChallengeTCATests.swift; sourceTree = "<group>"; };
 		EED1171629A04A54009D939E /* PlusMinusButtonDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusMinusButtonDomain.swift; sourceTree = "<group>"; };
 		EED1171829A0DE4A009D939E /* PlusMinusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusMinusButton.swift; sourceTree = "<group>"; };
 		EED1171F29A0E409009D939E /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -75,6 +74,7 @@
 		EED1173F29A14678009D939E /* ProductGroupDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductGroupDomain.swift; sourceTree = "<group>"; };
 		EEDCABD729A3D3C7005245E2 /* TotalAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalAmountView.swift; sourceTree = "<group>"; };
 		EEDCABD929A3D438005245E2 /* TotalAmountDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalAmountDomain.swift; sourceTree = "<group>"; };
+		EEDCABDB29A3F73D005245E2 /* PlusMinusButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusMinusButtonTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,7 +155,7 @@
 		EED116F929A0454A009D939E /* CabifyChallengeTCATests */ = {
 			isa = PBXGroup;
 			children = (
-				EED116FA29A0454A009D939E /* CabifyChallengeTCATests.swift */,
+				EEDCABDB29A3F73D005245E2 /* PlusMinusButtonTests.swift */,
 			);
 			path = CabifyChallengeTCATests;
 			sourceTree = "<group>";
@@ -386,7 +386,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EED116FB29A0454A009D939E /* CabifyChallengeTCATests.swift in Sources */,
+				EEDCABDC29A3F73D005245E2 /* PlusMinusButtonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
