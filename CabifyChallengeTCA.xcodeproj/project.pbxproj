@@ -10,7 +10,7 @@
 		EE1F9CAE29A1794900C04048 /* CheckoutStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1F9CAD29A1794900C04048 /* CheckoutStyle.swift */; };
 		EE1F9CB129A17F6800C04048 /* CheckoutList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1F9CB029A17F6800C04048 /* CheckoutList.swift */; };
 		EE1F9CB329A188AB00C04048 /* ProductGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1F9CB229A188AB00C04048 /* ProductGroupCell.swift */; };
-		EEB147E029A2A18300B970BD /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = EEB147DF29A2A18300B970BD /* ComposableArchitecture */; };
+		EE376E0629A5322E0017E18C /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = EE376E0529A5322E0017E18C /* ComposableArchitecture */; };
 		EEB147E329A2B36F00B970BD /* ChooseProductButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB147E229A2B36F00B970BD /* ChooseProductButton.swift */; };
 		EEB147E529A2B39200B970BD /* ChooseProductButtonDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB147E429A2B39200B970BD /* ChooseProductButtonDomain.swift */; };
 		EED116EA29A04549009D939E /* CabifyChallengeTCAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED116E929A04549009D939E /* CabifyChallengeTCAApp.swift */; };
@@ -94,7 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEB147E029A2A18300B970BD /* ComposableArchitecture in Frameworks */,
+				EE376E0629A5322E0017E18C /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,7 +309,7 @@
 			);
 			name = CabifyChallengeTCA;
 			packageProductDependencies = (
-				EEB147DF29A2A18300B970BD /* ComposableArchitecture */,
+				EE376E0529A5322E0017E18C /* ComposableArchitecture */,
 			);
 			productName = CabifyChallengeTCA;
 			productReference = EED116E629A04549009D939E /* CabifyChallengeTCA.app */;
@@ -362,7 +362,7 @@
 			);
 			mainGroup = EED116DD29A04548009D939E;
 			packageReferences = (
-				EEB147DE29A2A18300B970BD /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				EE376E0429A5322E0017E18C /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 			);
 			productRefGroup = EED116E729A04549009D939E /* Products */;
 			projectDirPath = "";
@@ -690,7 +690,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		EEB147DE29A2A18300B970BD /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+		EE376E0429A5322E0017E18C /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
 			requirement = {
@@ -701,9 +701,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		EEB147DF29A2A18300B970BD /* ComposableArchitecture */ = {
+		EE376E0529A5322E0017E18C /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EEB147DE29A2A18300B970BD /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			package = EE376E0429A5322E0017E18C /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
 		};
 /* End XCSwiftPackageProductDependency section */

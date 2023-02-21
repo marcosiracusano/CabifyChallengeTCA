@@ -47,12 +47,7 @@ final class CheckoutListTests: XCTestCase {
         )
         
         store.send(.showAlert) {
-            let totalPrice = $0.totalAmount.totalPrice.euroFormattedString
-            $0.alert = AlertState {
-                TextState("Thank you")
-            } message: {
-                TextState("You made a purchase of \(totalPrice).")
-            }
+            $0.shouldShowBuyDialog = true
         }
     }
     
@@ -64,16 +59,11 @@ final class CheckoutListTests: XCTestCase {
         )
         
         store.send(.showAlert) {
-            let totalPrice = $0.totalAmount.totalPrice.euroFormattedString
-            $0.alert = AlertState {
-                TextState("Thank you")
-            } message: {
-                TextState("You made a purchase of \(totalPrice).")
-            }
+            $0.shouldShowBuyDialog = true
         }
         
         store.send(.dismissAlert) {
-            $0.alert = nil
+            $0.shouldShowBuyDialog = false
         }
     }
 }

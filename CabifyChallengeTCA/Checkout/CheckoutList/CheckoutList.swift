@@ -15,13 +15,20 @@ struct CheckoutList: View {
         WithViewStore(store) { viewStore in
             NavigationStack {
                 List {
-                    ForEachStore(store.scope(state: \.productGroups,
-                                             action: CheckoutListDomain.Action.productGroup(id:action:))) {
+                    ForEachStore(
+                        store.scope(
+                            state: \.productGroups,
+                            action: CheckoutListDomain.Action.productGroup(id:action:)
+                        )
+                    ) {
                         ProductGroupCell(store: $0)
                     }
                     
-                    TotalAmountView(store: store.scope(state: \.totalAmount,
-                                                       action: CheckoutListDomain.Action.totalAmount))
+                    TotalAmountView(
+                        store: store.scope(
+                            state: \.totalAmount,
+                            action: CheckoutListDomain.Action.totalAmount)
+                    )
                 }
                 .listStyle(.plain)
                 .scrollDisabled(true)
@@ -34,10 +41,14 @@ struct CheckoutList: View {
                 .buttonStyle(.checkout)
             }
             .navigationTitle("Checkout")
-            .alert(
-                store.scope(state: \.alert),
-                dismiss: .dismissAlert
-            )
+            .alert("Thank you",
+                   isPresented: viewStore.binding(
+                    get: \.shouldShowBuyDialog,
+                    send: CheckoutListDomain.Action.dismissAlert)
+            ) {
+            } message: {
+                Text("You made a purchase of \(viewStore.totalAmount.totalPrice.euroFormattedString).")
+            }
         }
     }
 }
