@@ -51,8 +51,12 @@ struct TotalAmountView: View {
 
 struct TotalAmount_Previews: PreviewProvider {
     static var previews: some View {
-        TotalAmountView(store: Store(initialState: TotalAmountDomain.State(),
-                                     reducer: TotalAmountDomain.reducer,
-                                     environment: TotalAmountDomain.Environment()))
+        TotalAmountView(
+            store: Store(
+                initialState: TotalAmountDomain.State(),
+                reducer: TotalAmountDomain.reducer,
+                environment: TotalAmountDomain.Environment()
+            )
+        )
     }
 }

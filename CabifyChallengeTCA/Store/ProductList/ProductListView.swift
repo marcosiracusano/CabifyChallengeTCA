@@ -15,8 +15,12 @@ struct ProductListView: View {
         WithViewStore(store) { viewStore in
             NavigationStack {
                 List {
-                    ForEachStore(store.scope(state: \.productList,
-                                             action: ProductListDomain.Action.product(id:action:))) {
+                    ForEachStore(
+                        store.scope(
+                            state: \.productList,
+                            action: ProductListDomain.Action.product(id:action:)
+                        )
+                    ) {
                         ProductCell(store: $0)
                     }
                 }
@@ -31,25 +35,45 @@ struct ProductListView: View {
                 
                 Spacer()
                 
-                ChooseProductButton(store: store.scope(state: \.chooseProductButton,
-                                                       action: ProductListDomain.Action.chooseProductButton))
+                ChooseProductButton(
+                    store: store.scope(
+                        state: \.chooseProductButton,
+                        action: ProductListDomain.Action.chooseProductButton
+                    )
+                )
                 
-                .navigationDestination(isPresented: viewStore.binding(get: \.shouldGoToCheckout,
-                                                                      send: ProductListDomain.Action.goToCheckout(isPushed:))) {
-                    CheckoutList(store: Store(initialState: viewStore.checkoutList,
-                                              reducer: CheckoutListDomain.reducer,
-                                              environment: CheckoutListDomain.Environment()))
+                .navigationDestination(
+                    isPresented: viewStore.binding(
+                        get: \.shouldGoToCheckout,
+                        send: ProductListDomain.Action.goToCheckout(isPushed:)
+                    )
+                ) {
+                    CheckoutList(
+                        store: Store(
+                            initialState: viewStore.checkoutList,
+                            reducer: CheckoutListDomain.reducer,
+                            environment: CheckoutListDomain.Environment()
+                        )
+                    )
                 }
             }
             .tint(.moradul)
+            .alert(
+                store.scope(state: \.alert),
+                dismiss: .alertCancelTapped
+            )
         }
     }
 }
 
 struct ProductSelectionView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductListView(store: Store(initialState: ProductListDomain.State(),
-                                          reducer: ProductListDomain.reducer,
-                                          environment: ProductListDomain.Environment()))
+        ProductListView(
+            store: Store(
+                initialState: ProductListDomain.State(),
+                reducer: ProductListDomain.reducer,
+                environment: ProductListDomain.Environment()
+            )
+        )
     }
 }

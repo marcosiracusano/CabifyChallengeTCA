@@ -42,9 +42,15 @@ struct ProductGroupCell: View {
 
 struct ProductGroupCell_Previews: PreviewProvider {
     static var previews: some View {
-        ProductGroupCell(store: Store(initialState: ProductGroupDomain.State(id: UUID(),
-                                                                             productGroup: MockFactory.voucherProductGroupExample),
-                                      reducer: ProductGroupDomain.reducer,
-                                      environment: ProductGroupDomain.Environment()))
+        ProductGroupCell(
+            store: Store(
+                initialState: ProductGroupDomain.State(
+                    id: UUID(),
+                    productGroup: MockFactory.voucherProductGroupExample
+                ),
+                reducer: ProductGroupDomain.reducer,
+                environment: ProductGroupDomain.Environment()
+            )
+        )
     }
 }

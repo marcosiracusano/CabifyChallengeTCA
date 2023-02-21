@@ -15,12 +15,15 @@ struct ProductListDomain {
         var checkoutList = CheckoutListDomain.State()
         var shouldGoToCheckout = false
         var viewDidLoad = false
+        var alert: AlertState<Action>?
     }
     
     enum Action: Equatable {
         case onAppear
         case fetchProducts
         case fetchProductsResponse(TaskResult<[Product]>)
+        case alertCancelTapped
+        case alertRetryTapped
         case product(id: ProductDomain.State.ID, action: ProductDomain.Action)
         case getChooseProductButtonState
         case getTotalPrice
@@ -29,11 +32,25 @@ struct ProductListDomain {
     }
     
     struct Environment {
+        enum FetchProductsError: Error {
+            case invalidStatusCode
+            case failedToDecode
+        }
+        
         func fetchProducts() async throws -> [Product] {
             let url = URL(string: "https://gist.githubusercontent.com/palcalde/6c19259bd32dd6aafa327fa557859c2f/raw/ba51779474a150ee4367cda4f4ffacdcca479887/Products.json")!
-            let (data, _) = try await URLSession.shared.data(from: url)
-            let productsData = try JSONDecoder().decode([String:[Product]].self, from: data)
-            return productsData["products"] ?? []
+            let (data, response) = try await URLSession.shared.data(from: url)
+            
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                throw FetchProductsError.invalidStatusCode
+            }
+            
+            do {
+                let productsData = try JSONDecoder().decode([String:[Product]].self, from: data)
+                return productsData["products"] ?? []
+            } catch {
+                throw FetchProductsError.failedToDecode
+            }
         }
     }
     
@@ -70,12 +87,32 @@ struct ProductListDomain {
                     }
                     
                 case .fetchProductsResponse(.success( let products)):
+                    state.alert = nil
                     state.productList = IdentifiedArray(uniqueElements: products.map { ProductDomain.State(id: UUID(), product: $0) })
                     return .send(.getChooseProductButtonState)
                     
                 case .fetchProductsResponse(.failure( let error)):
-                    print(error)
+                    state.alert = AlertState {
+                        TextState("Error")
+                    } actions: {
+                        ButtonState(role: .cancel, action: .send(.alertCancelTapped)) {
+                            TextState("Cancel")
+                        }
+                        ButtonState(action: .send(.alertRetryTapped)) {
+                            TextState("Retry")
+                        }
+                    } message: {
+                        TextState(error.localizedDescription)
+                    }
                     return .none
+                    
+                case .alertCancelTapped:
+                    state.alert = nil
+                    return .none
+                    
+                case .alertRetryTapped:
+                    state.alert = nil
+                    return .send(.fetchProducts)
                     
                 case .product(id: let id, action: let action):
                     return .send(.getChooseProductButtonState)

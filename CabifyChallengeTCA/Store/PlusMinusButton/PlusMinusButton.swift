@@ -12,7 +12,7 @@ struct PlusMinusButton: View {
     let store: Store<PlusMinusButtonDomain.State, PlusMinusButtonDomain.Action>
     
     var body: some View {
-        WithViewStore(self.store) { viewStore in
+        WithViewStore(store) { viewStore in
             HStack {
                 if viewStore.count > 0 {
                     Button {
@@ -45,8 +45,12 @@ struct PlusMinusButton: View {
 
 struct PlusMinusButton_Previews: PreviewProvider {
     static var previews: some View {
-        PlusMinusButton(store: Store(initialState: PlusMinusButtonDomain.State(),
-                                     reducer: PlusMinusButtonDomain.reducer,
-                                     environment: PlusMinusButtonDomain.Environment()))
+        PlusMinusButton(
+            store: Store(
+                initialState: PlusMinusButtonDomain.State(),
+                reducer: PlusMinusButtonDomain.reducer,
+                environment: PlusMinusButtonDomain.Environment()
+            )
+        )
     }
 }

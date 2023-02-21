@@ -13,7 +13,7 @@ struct ChooseProductButton: View {
 
     
     var body: some View {
-        WithViewStore(self.store) { viewStore in
+        WithViewStore(store) { viewStore in
             ZStack {
                 Button {
                     viewStore.send(.goToCheckout)
@@ -41,8 +41,12 @@ struct ChooseProductButton: View {
 
 struct CheckoutButton_Previews: PreviewProvider {
     static var previews: some View {
-        ChooseProductButton(store: Store(initialState: ChooseProductButtonDomain.State(),
-                                    reducer: ChooseProductButtonDomain.reducer,
-                                    environment: ChooseProductButtonDomain.Environment()))
+        ChooseProductButton(
+            store: Store(
+                initialState: ChooseProductButtonDomain.State(),
+                reducer: ChooseProductButtonDomain.reducer,
+                environment: ChooseProductButtonDomain.Environment()
+            )
+        )
     }
 }

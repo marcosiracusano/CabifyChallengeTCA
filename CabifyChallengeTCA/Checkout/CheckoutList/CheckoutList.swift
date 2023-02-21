@@ -34,11 +34,10 @@ struct CheckoutList: View {
                 .buttonStyle(.checkout)
             }
             .navigationTitle("Checkout")
-            .alert("Thank you", isPresented: viewStore.binding(get: \.shouldShowBuyDialog,
-                                                               send: CheckoutListDomain.Action.dismissAlert)) {
-            } message: {
-                Text("You made a purchase of \(viewStore.totalAmount.totalPrice.euroFormattedString).")
-            }
+            .alert(
+                store.scope(state: \.alert),
+                dismiss: .dismissAlert
+            )
         }
     }
 }
@@ -46,9 +45,16 @@ struct CheckoutList: View {
 struct CheckoutList_Previews: PreviewProvider {
     static var previews: some View {
         CheckoutList(
-            store: Store(initialState: CheckoutListDomain.State(productGroups: IdentifiedArray(uniqueElements: [ProductGroupDomain.State(id: UUID(), productGroup: MockFactory.voucherProductGroupExample), ProductGroupDomain.State(id: UUID(), productGroup: MockFactory.voucherProductGroupExample)])),
-                         reducer: CheckoutListDomain.reducer,
-                         environment: CheckoutListDomain.Environment())
+            store: Store(
+                initialState: CheckoutListDomain.State(
+                    productGroups: IdentifiedArray(
+                        uniqueElements: [ProductGroupDomain.State(id: UUID(), productGroup: MockFactory.voucherProductGroupExample),
+                                         ProductGroupDomain.State(id: UUID(), productGroup: MockFactory.voucherProductGroupExample)]
+                    )
+                ),
+                reducer: CheckoutListDomain.reducer,
+                environment: CheckoutListDomain.Environment()
+            )
         )
     }
 }

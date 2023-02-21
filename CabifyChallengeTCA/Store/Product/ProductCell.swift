@@ -37,8 +37,12 @@ struct ProductCell: View {
                 
                 Spacer()
                 
-                PlusMinusButton(store: self.store.scope(state: \.plusMinusButton,
-                                                        action: ProductDomain.Action.tapButton))
+                PlusMinusButton(
+                    store: store.scope(
+                        state: \.plusMinusButton,
+                        action: ProductDomain.Action.tapButton
+                    )
+                )
             }
             .padding(.init(top: 16, leading: 0, bottom: 16, trailing: 0))
             .onAppear {
@@ -50,9 +54,15 @@ struct ProductCell: View {
 
 struct ProductCell_Previews: PreviewProvider {
     static var previews: some View {
-        ProductCell(store: Store(initialState: ProductDomain.State(id: UUID(),
-                                                                   product: MockFactory.getProduct(.tshirt)!),
-                                 reducer: ProductDomain.reducer,
-                                 environment: ProductDomain.Environment()))
+        ProductCell(
+            store: Store(
+                initialState: ProductDomain.State(
+                    id: UUID(),
+                    product: MockFactory.getProduct(.tshirt)!
+                ),
+                reducer: ProductDomain.reducer,
+                environment: ProductDomain.Environment()
+            )
+        )
     }
 }

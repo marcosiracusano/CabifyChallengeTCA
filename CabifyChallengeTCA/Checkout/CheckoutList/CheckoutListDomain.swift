@@ -13,7 +13,7 @@ struct CheckoutListDomain {
     struct State: Equatable {
         var productGroups: IdentifiedArrayOf<ProductGroupDomain.State> = []
         var totalAmount = TotalAmountDomain.State()
-        var shouldShowBuyDialog = false
+        var alert: AlertState<Action>?
     }
     
     enum Action: Equatable {
@@ -45,11 +45,18 @@ struct CheckoutListDomain {
                     return .none
                     
                 case .showAlert:
-                    state.shouldShowBuyDialog = true
+                    let totalPrice = state.totalAmount.totalPrice.euroFormattedString
+                    
+                    state.alert = AlertState {
+                        TextState("Thank you")
+                    } message: {
+                        TextState("You made a purchase of \(totalPrice).")
+                    }
+                    
                     return .none
                     
                 case .dismissAlert:
-                    state.shouldShowBuyDialog = false
+                    state.alert = nil
                     return .none
                 }
             }
