@@ -56,22 +56,25 @@ struct ProductListDomain {
     
     static let reducer = AnyReducer<State, Action, Environment>
         .combine(
-            ProductDomain.reducer.forEach(state: \.productList,
-                                          action: /Action.product(id:action:),
-                                          environment: { _ in ProductDomain.Environment() }),
+            ProductDomain.reducer.forEach(
+                state: \.productList,
+                action: /Action.product(id:action:),
+                environment: { _ in ProductDomain.Environment() }
+            ),
             
-            ChooseProductButtonDomain.reducer.pullback(state: \.chooseProductButton,
-                                                       action: /Action.chooseProductButton,
-                                                       environment: { _ in
-                                                           ChooseProductButtonDomain.Environment() }),
+            ChooseProductButtonDomain.reducer.pullback(
+                state: \.chooseProductButton,
+                action: /Action.chooseProductButton,
+                environment: { _ in ChooseProductButtonDomain.Environment() }
+            ),
             
-            .init { state, action, environment in
-                switch action {
-                case .onAppear:
-                    state.shouldGoToCheckout = false
-                    
-                    if state.viewDidLoad {
-                        return .none
+                .init { state, action, environment in
+                    switch action {
+                    case .onAppear:
+                        state.shouldGoToCheckout = false
+                        
+                        if state.viewDidLoad {
+                            return .none
                     } else {
                         state.viewDidLoad = true
                         return .send(.fetchProducts)
@@ -133,9 +136,10 @@ struct ProductListDomain {
                 case .goToCheckout(let isPushed):
                     state.checkoutList.productGroups = IdentifiedArray(uniqueElements: state.productList.compactMap { state in
                         state.count > 0 ?
-                        ProductGroupDomain.State(id: UUID(),
-                                                 productGroup: ProductGroup(product: state.product,
-                                                                            quantity: state.count))
+                        ProductGroupDomain.State(
+                            id: UUID(),
+                            productGroup: ProductGroup(product: state.product,quantity: state.count)
+                        )
                         : nil
                     })
                     state.shouldGoToCheckout = true
